@@ -167,10 +167,12 @@ a.underline-link:hover {
   border-radius: 6px;
   padding: 20px;
   background: var(--surface);
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 .project-card:hover {
-  border-color: var(--accent);
+  border-color: transparent;
+  box-shadow: 0 16px 40px -8px rgba(248, 195, 185, 0.35);
+  transform: translateY(-4px);
 }
 .project-card:nth-child(even) {
   grid-template-columns: 1fr 1.1fr;
