@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Provider & Facility Advanced Search - Kelsey Guo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html" class="wordmark">Kelsey Guo</a>
+      <div class="nav-links">
+        <a href="work.html" aria-current="page">Work</a>
+        <a href="about.html">About</a>
+        <a href="https://drive.google.com/file/d/1MKLHyuRDNJYFKnCXRcCWQ2kk3Nf8_HWo/view" target="_blank" rel="noopener">Résumé</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="case-header">
+    <div class="wrap">
+      <a class="back-link underline-link" href="work.html">← All work</a>
+      <h1>Provider & Facility Advanced Search</h1>
+      <dl class="meta-grid">
+        <div>
+          <dt>Team</dt>
+          <dd>Cohere Health<br>1 designer (me), 1 PM, 3 engineers</dd>
+        </div>
+        <div>
+          <dt>Timeframe</dt>
+          <dd>Feb 2026 - present</dd>
+        </div>
+        <div>
+          <dt>My role</dt>
+          <dd>Sole product designer</dd>
+        </div>
+        <div>
+          <dt>Skills</dt>
+          <dd>Search and discovery, workflow design, healthcare data</dd>
+        </div>
+      </dl>
+    </div>
+  </header>
+
+  <main class="case-body">
+    <div class="wrap">
+
+      <section>
+        <p>I'm designing a flexible provider search experience that helps auth submitters find the right provider or facility faster, replacing a dead end that was quietly costing Cohere Health money every time it was hit. This project is in active development as of this writing, so the numbers below are directional, not final launch results.</p>
+      </section>
+
+      <section>
+        <h2>The problem</h2>
+        <p>When submitters create a prior authorization, they need to attach the right provider or facility record. Two things kept getting in the way. First, submitters don't always have a provider's NPI or TIN on hand, since doctors' orders don't always include it, so anyone without that number hit a wall. Second, when a search by NPI or TIN failed, the only fallback was creating a brand new manual provider record. Manual records can't be run through our network checks, which means those auths get pended for review, and every pend adds operational cost.</p>
+        <p>So the same gap was hitting people twice: submitters without the right number couldn't search effectively, and the fallback we gave them was the exact behavior that was driving up review volume downstream.</p>
+      </section>
+
+      <section>
+        <h2>Solution</h2>
+        <p>Instead of routing straight to manual record creation the moment a lookup failed, I added a real search step in between: an advanced search that lets submitters search by any combination of what they actually have, name, specialty, location, state, zip, not just NPI or TIN.</p>
+        <div class="shot"><img src="images/pas/trigger.png" alt="Provider search dropdown with a Can't find it, Start advanced search link"></div>
+        <p class="shot-caption">The entry point: instead of dropping straight into a blank manual-record form, a "Can't find it?" link opens advanced search first.</p>
+        <p>The search itself is deliberately loose. A submitter can fill in as little or as much as they know, specialty and zip code alone is enough to return a working result set, and the modal returns 20 results at a time with a "load more" option so a wide search doesn't feel like a dead end either.</p>
+        <div class="shot"><img src="images/pas/browse-results.png" alt="Advanced search results modal showing a list of matching providers with Continue buttons"></div>
+        <p class="shot-caption">Browsing by specialty and zip code returns a working list of candidates, each one selectable in a single click.</p>
+        <p>Manual record creation is still there as a last resort, since some providers genuinely won't exist in our system yet, but now it only shows up after a real search has failed, and the form itself validates the address before letting the submitter proceed. That validation step is a small thing, but it's the difference between a manual record that's actually usable downstream and one that just creates more review work later.</p>
+        <div class="shot"><img src="images/pas/manual-record.png" alt="Manual provider record form with an address validated and a Continue button"></div>
+        <p class="shot-caption">When a provider genuinely isn't in the system, the fallback is still there, now with address validation built in before the record is created.</p>
+      </section>
+
+      <section>
+        <h2>Early feedback</h2>
+        <p>In early testing, all 3 current Cohere users said this would reduce how often they needed to manually create a provider. It also confirmed something I'd suspected going in: search behavior varies a lot by office. Some submitters know exactly who they're looking for and want a fast, exact lookup. Others are starting from partial information and need to browse. Building one flexible search instead of optimizing for a single "correct" workflow meant it could support both without forcing either group through the other's process.</p>
+      </section>
+
+      <section>
+        <h2>Status</h2>
+        <p>Development is underway, with a target launch by the end of Q3. Visual QA is in progress now. I'll update this case study with real usage data once it's live.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="case-nav-next">
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:baseline;">
+      <a href="case-scanwell.html" class="underline-link">
+        <span class="label">Next project</span>
+        <span class="title">At-Home COVID-19 Test</span>
+      </a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 Kelsey Guo</span>
+      <div class="footer-links">
+        <a href="http://www.linkedin.com/in/kmguo13" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:kmguo13@gmail.com">Email</a>
+        <a href="http://www.instagram.com/kelschini" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

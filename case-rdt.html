@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rapid Diagnostic Test Reader App - Kelsey Guo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html" class="wordmark">Kelsey Guo</a>
+      <div class="nav-links">
+        <a href="work.html" aria-current="page">Work</a>
+        <a href="about.html">About</a>
+        <a href="https://drive.google.com/file/d/1MKLHyuRDNJYFKnCXRcCWQ2kk3Nf8_HWo/view" target="_blank" rel="noopener">Résumé</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="case-header">
+    <div class="wrap">
+      <a class="back-link underline-link" href="work.html">← All work</a>
+      <h1>Rapid Diagnostic Test (RDT) Reader App</h1>
+      <dl class="meta-grid">
+        <div>
+          <dt>Team</dt>
+          <dd>PM, front-end eng, full-stack eng, ML eng</dd>
+        </div>
+        <div>
+          <dt>Timeframe</dt>
+          <dd>June – Dec 2020 (6 months)</dd>
+        </div>
+        <div>
+          <dt>My role</dt>
+          <dd>UX Research &amp; Design Lead (sole designer)</dd>
+        </div>
+        <div>
+          <dt>Skills</dt>
+          <dd>Research, personas, affinity mapping, wireframing</dd>
+        </div>
+      </dl>
+    </div>
+  </header>
+
+  <main class="case-body">
+    <div class="wrap">
+
+      <section>
+        <p>I was UX Research and Design Lead, the sole designer on a graduate capstone sponsored by Microsoft AI for Good and PATH, owning the process end to end from discovery through high-fidelity design and handoff.</p>
+      </section>
+
+      <section>
+        <h2>Problem</h2>
+        <p>Rapid diagnostic tests are widely used across low- and middle-income countries, but result interpretation is inconsistent. Operators read weak test lines differently, and that variability feeds into the national and international health data used for policy decisions.</p>
+        <blockquote>How might we improve RDT interpretation consistency and efficiency for lab technicians, and eventually community health workers in LMICs, using AI and ubiquitous devices?</blockquote>
+      </section>
+
+      <section>
+        <h2>Approach</h2>
+        <p>None of us had prior healthcare experience, so I started with secondary research to build a shared baseline: a review of 70 publications and sources, plus a competitive analysis of 6 existing products. From there I ran 9 expert interviews across lab technicians, community health workers, and RDT researchers, and led the team through affinity mapping to synthesize what we heard.</p>
+        <div class="media-placeholder"><span>Image: secondary research insights + affinity map</span></div>
+        <p>That research pointed to two distinct user groups, lab technicians and community health workers, who had different training and different working environments but shared a need to support both single and batch testing. I turned those findings into personas and a journey map, led the team through a prioritized PRD, and then designed the information architecture myself.</p>
+        <div class="media-placeholder"><span>Image: personas + journey map</span></div>
+        <p>Design started on paper. Wireframing by hand let me iterate quickly with engineering and product in real time, without getting attached too early. From there I went through three rounds of mid-to-high-fidelity design, each one tested against pre-alpha and alpha feedback. The current version is built around a Templates to Current Tests to History flow meant to improve data-collection efficiency for lab technicians, and all of it has been fully implemented in Android and Flutter.</p>
+        <div class="media-placeholder"><span>Image: paper wireframes → high-fidelity screens</span></div>
+      </section>
+
+      <section>
+        <h2>Research validation</h2>
+        <p>I led 11 in-person usability studies (6 RDT experts, 2 non-experts) at PATH's Seattle office, run under realistic conditions, participants wore gloves throughout to mimic actual field use. We mapped and prioritized the findings to guide the next design round ahead of a planned evaluation in December.</p>
+        <div class="media-placeholder"><span>Image: usability testing sessions + findings map</span></div>
+      </section>
+
+      <section>
+        <h2>Takeaways</h2>
+        <p>This was the first time I owned an end-to-end UX process on my own, from research design through implementation handoff, and it taught me to design inside real technical and business constraints instead of defaulting to open-ended exploration. Leading research in a space none of us knew well also shaped how I approach ambiguous problems now: build the evidence first, and let it drive every decision that follows, from personas to IA to the interaction design itself.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="case-nav-next">
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:baseline;">
+      <a href="case-qm.html" class="underline-link">
+        <span class="label">Next project</span>
+        <span class="title">Queue Management</span>
+      </a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 Kelsey Guo</span>
+      <div class="footer-links">
+        <a href="http://www.linkedin.com/in/kmguo13" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:kmguo13@gmail.com">Email</a>
+        <a href="http://www.instagram.com/kelschini" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
