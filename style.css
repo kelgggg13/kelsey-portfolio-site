@@ -361,7 +361,8 @@ a.underline-link:hover {
   grid-template-columns: 1.1fr 0.9fr;
   gap: 56px;
   align-items: start;
-  padding: 56px 0 96px;
+  padding-top: 56px;
+  padding-bottom: 96px;
 }
 .about-layout h1 {
   font-family: var(--serif);
