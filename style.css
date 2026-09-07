@@ -20,6 +20,13 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Overused Grotesk';
+  src: url('fonts/overused-grotesk/OverusedGrotesk-VF.woff2') format('woff2');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ---------- Tokens ---------- */
 :root {
@@ -32,7 +39,7 @@
   --accent: #085420;      /* deep green - solid fills, borders */
   --accent-warm: #F8C3B9; /* soft pink - links, hover states, personality */
   --serif: 'Butler Free', 'Fraunces', Georgia, serif;
-  --sans: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans: 'Overused Grotesk', 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --max: 720px;
   --max-wide: 1040px;
 }
