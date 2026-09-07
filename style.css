@@ -199,6 +199,13 @@ a.underline-link:hover {
   box-shadow: 18px 22px 36px -10px rgba(248, 195, 185, 0.4);
   transform: translateY(-4px);
 }
+.project-card .shot {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+  margin: -20px 0 -20px -20px;
+}
 .project-card-body h3 {
   font-family: var(--serif);
   font-size: 22px;
