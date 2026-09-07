@@ -1,3 +1,26 @@
+/* ---------- Fonts ---------- */
+@font-face {
+  font-family: 'Butler Free';
+  src: url('fonts/butler/Butler-Free-Rmn.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Butler Free';
+  src: url('fonts/butler/Butler-Free-Med.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Butler Free';
+  src: url('fonts/butler/Butler-Free-SBd.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ---------- Tokens ---------- */
 :root {
   --bg: #0B0F1A;
@@ -8,7 +31,7 @@
   --line: #232B3D;
   --accent: #085420;      /* deep green - solid fills, borders */
   --accent-warm: #F8C3B9; /* soft pink - links, hover states, personality */
-  --serif: 'Fraunces', Georgia, serif;
+  --serif: 'Butler Free', 'Fraunces', Georgia, serif;
   --sans: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --max: 720px;
   --max-wide: 1040px;
