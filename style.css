@@ -146,6 +146,7 @@ a.underline-link:hover {
   line-height: 1.08;
   margin: 0 0 28px;
   color: var(--ink-soft);
+  white-space: nowrap;
 }
 .rotator {
   color: var(--accent-warm);
@@ -177,6 +178,10 @@ a.underline-link:hover {
   align-items: center;
   padding: 40px 0;
 }
+.home-hero > .wrap {
+  min-width: 0;
+  width: 100%;
+}
 .home-hero h1,
 .home-hero .rotator-line {
   font-size: clamp(52px, 9vw, 108px);
@@ -193,47 +198,32 @@ a.underline-link:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  color: var(--ink-faint);
+  gap: 0;
   text-decoration: none;
-  transition: color 0.15s ease;
 }
-.scroll-cue:hover {
-  color: var(--accent-warm);
+.scroll-cue .chevron {
+  width: 11px;
+  height: 11px;
+  margin-top: -3px;
+  border-right: 1.5px solid var(--ink-faint);
+  border-bottom: 1.5px solid var(--ink-faint);
+  transform: rotate(45deg);
+  opacity: 0.2;
+  animation: chevron-wave 2s ease-in-out infinite;
+  transition: border-color 0.15s ease;
 }
-.scroll-label {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.scroll-cue:hover .chevron {
+  border-color: var(--accent-warm);
 }
-.scroll-icon {
-  display: block;
-  width: 22px;
-  height: 34px;
-  border: 1.5px solid currentColor;
-  border-radius: 12px;
-  position: relative;
-}
-.scroll-icon::before {
-  content: "";
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  width: 4px;
-  height: 8px;
-  border-radius: 2px;
-  background: var(--accent-warm);
-  transform: translateX(-50%);
-  animation: scroll-wheel 1.6s ease-in-out infinite;
-}
-@keyframes scroll-wheel {
-  0% { transform: translateX(-50%) translateY(0); opacity: 1; }
-  60% { transform: translateX(-50%) translateY(10px); opacity: 0.3; }
-  61% { transform: translateX(-50%) translateY(0); opacity: 0; }
-  100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+.scroll-cue .chevron:nth-child(1) { animation-delay: 0s; }
+.scroll-cue .chevron:nth-child(2) { animation-delay: 0.18s; }
+.scroll-cue .chevron:nth-child(3) { animation-delay: 0.36s; }
+@keyframes chevron-wave {
+  0%, 60%, 100% { opacity: 0.2; }
+  25% { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .scroll-icon::before { animation: none; }
+  .scroll-cue .chevron { animation: none; opacity: 0.5; }
 }
 @media (max-width: 640px) {
   .home-hero { min-height: calc(100svh - 89px); padding: 32px 0 88px; }
