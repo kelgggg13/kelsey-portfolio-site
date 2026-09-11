@@ -23,10 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const list = [
+    "designing for social good.",
     "a product designer.",
     "a researcher at heart.",
-    "obsessed with the details.",
-    "designing for social good."
+    "obsessed with the details."
   ];
 
   let i = 0;
