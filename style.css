@@ -177,10 +177,30 @@ a.underline-link:hover {
   display: flex;
   align-items: center;
   padding: 40px 0;
+  overflow: hidden;
 }
 .home-hero > .wrap {
+  position: relative;
+  z-index: 1;
   min-width: 0;
   width: 100%;
+}
+.hero-glow {
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  max-width: 140vw;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(60% 60% at 78% 88%, rgba(73, 190, 255, 0.55) 0%, rgba(73, 190, 255, 0) 100%),
+    radial-gradient(65% 70% at 24% 96%, rgba(248, 195, 185, 0.6) 0%, rgba(248, 195, 185, 0) 100%);
+  mix-blend-mode: screen;
+  filter: blur(200px);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
 }
 .home-hero h1,
 .home-hero .rotator-line {
@@ -200,6 +220,7 @@ a.underline-link:hover {
   align-items: center;
   gap: 0;
   text-decoration: none;
+  z-index: 1;
 }
 .scroll-cue .chevron {
   width: 11px;
