@@ -187,20 +187,27 @@ a.underline-link:hover {
 }
 .hero-glow {
   position: absolute;
-  width: 1000px;
-  height: 1000px;
-  max-width: 140vw;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  background:
-    radial-gradient(60% 60% at 78% 88%, rgba(73, 190, 255, 0.55) 0%, rgba(73, 190, 255, 0) 100%),
-    radial-gradient(65% 70% at 24% 96%, rgba(248, 195, 185, 0.6) 0%, rgba(248, 195, 185, 0) 100%);
+  border-radius: 50%;
   mix-blend-mode: screen;
-  filter: blur(200px);
-  opacity: 0.8;
+  filter: blur(90px);
   pointer-events: none;
   z-index: 0;
+}
+.hero-glow.blue {
+  width: 480px;
+  height: 480px;
+  max-width: 60vw;
+  top: -80px;
+  right: -100px;
+  background: radial-gradient(circle at 50% 50%, rgba(73, 190, 255, 0.55) 0%, rgba(73, 190, 255, 0) 72%);
+}
+.hero-glow.pink {
+  width: 520px;
+  height: 520px;
+  max-width: 65vw;
+  bottom: -140px;
+  left: -120px;
+  background: radial-gradient(circle at 50% 50%, rgba(248, 195, 185, 0.6) 0%, rgba(248, 195, 185, 0) 72%);
 }
 .home-hero h1,
 .home-hero .rotator-line {
