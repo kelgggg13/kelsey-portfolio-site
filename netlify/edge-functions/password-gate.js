@@ -66,14 +66,15 @@ function gatePage({ redirectTo, error }) {
   body { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 100vh; cursor: auto; }
   .gate-glow { position: fixed; width: 620px; height: 620px; right: -140px; bottom: -140px; pointer-events: none; z-index: 0; }
   .gate-glow img { position: absolute; inset: -94.12%; width: auto; height: auto; max-width: none; display: block; }
-  .gate { position: relative; z-index: 1; max-width: 420px; width: 100%; padding: 0 32px; text-align: center; }
+  .gate { position: relative; z-index: 1; max-width: 640px; width: 100%; padding: 0 32px; text-align: center; }
   .gate-icon { font-size: 40px; margin-bottom: 20px; line-height: 1; }
   .gate h1 {
     font-family: var(--serif);
     font-weight: 500;
-    font-size: clamp(28px, 4vw, 40px);
+    font-size: clamp(20px, 3.4vw, 40px);
     line-height: 1.15;
     margin: 0 0 36px;
+    white-space: nowrap;
   }
   .gate-input-wrap { position: relative; max-width: 320px; margin: 0 auto; }
   .gate-input-wrap input[type="password"] {
@@ -133,7 +134,7 @@ function gatePage({ redirectTo, error }) {
         <button type="submit" aria-label="Submit">&rarr;</button>
       </div>
     </form>
-    ${error ? '<p class="gate-error">Please try again, or contact me with questions 🙂</p>' : ""}
+    ${error ? '<p class="gate-error">Please try again, or contact me with questions :)</p>' : ""}
   </div>
   <script>
     (function () {
