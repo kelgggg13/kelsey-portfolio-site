@@ -137,6 +137,22 @@ function gatePage({ redirectTo, error }) {
   </div>
   <script>
     (function () {
+      var pwInput = document.querySelector('.gate-input-wrap input[type="password"]');
+      var form = pwInput ? pwInput.closest('form') : null;
+      if (pwInput && form) {
+        pwInput.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') {
+            if (typeof form.requestSubmit === 'function') {
+              form.requestSubmit();
+            } else {
+              form.submit();
+            }
+          }
+        });
+      }
+    })();
+
+    (function () {
       var glow = document.querySelector('.gate-glow');
       if (!glow || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
