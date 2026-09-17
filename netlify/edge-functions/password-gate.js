@@ -135,6 +135,39 @@ function gatePage({ redirectTo, error }) {
     </form>
     ${error ? '<p class="gate-error">Please try again, or contact me with questions 🙂</p>' : ""}
   </div>
+  <script>
+    (function () {
+      var glow = document.querySelector('.gate-glow');
+      if (!glow || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var targetX = null, targetY = null, currentX = 0, currentY = 0, raf = null;
+
+      function tick() {
+        currentX += (targetX - currentX) * 0.08;
+        currentY += (targetY - currentY) * 0.08;
+        glow.style.left = currentX + 'px';
+        glow.style.top = currentY + 'px';
+        glow.style.right = 'auto';
+        glow.style.bottom = 'auto';
+        glow.style.transform = 'translate(-50%, -50%)';
+        if (Math.abs(targetX - currentX) > 0.5 || Math.abs(targetY - currentY) > 0.5) {
+          raf = requestAnimationFrame(tick);
+        } else {
+          raf = null;
+        }
+      }
+
+      document.addEventListener('mousemove', function (e) {
+        targetX = e.clientX;
+        targetY = e.clientY;
+        if (currentX === 0 && currentY === 0) {
+          currentX = targetX;
+          currentY = targetY;
+        }
+        if (!raf) raf = requestAnimationFrame(tick);
+      });
+    })();
+  </script>
 </body>
 </html>`;
 }
