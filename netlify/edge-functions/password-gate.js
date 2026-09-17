@@ -63,58 +63,77 @@ function gatePage({ redirectTo, error }) {
 <title>Kelsey Guo</title>
 <link rel="stylesheet" href="/style.css">
 <style>
-  body { display: flex; align-items: center; justify-content: center; min-height: 100vh; cursor: auto; }
-  .gate { max-width: 380px; width: 100%; padding: 0 32px; text-align: center; }
-  .gate .wordmark { font-family: var(--serif); font-size: 22px; font-weight: 500; display: block; margin-bottom: 28px; }
-  .gate h1 { font-family: var(--serif); font-weight: 500; font-size: 28px; margin: 0 0 12px; }
-  .gate p.hint { color: var(--ink-soft); font-size: 15px; margin: 0 0 28px; }
-  .gate form { display: flex; flex-direction: column; gap: 14px; }
-  .gate input[type="password"] {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 12px 16px;
-    font-size: 16px;
-    color: var(--ink);
-    font-family: var(--sans);
-    text-align: center;
+  body { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 100vh; cursor: auto; }
+  .gate-glow { position: fixed; width: 620px; height: 620px; right: -140px; bottom: -140px; pointer-events: none; z-index: 0; }
+  .gate-glow img { position: absolute; inset: -94.12%; width: auto; height: auto; max-width: none; display: block; }
+  .gate { position: relative; z-index: 1; max-width: 420px; width: 100%; padding: 0 32px; text-align: center; }
+  .gate-icon { font-size: 40px; margin-bottom: 20px; line-height: 1; }
+  .gate h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.15;
+    margin: 0 0 36px;
   }
-  .gate input[type="password"]:focus {
+  .gate-input-wrap { position: relative; max-width: 320px; margin: 0 auto; }
+  .gate-input-wrap input[type="password"] {
+    width: 100%;
+    background: var(--ink);
+    border: none;
+    border-radius: 999px;
+    padding: 16px 56px 16px 24px;
+    font-size: 16px;
+    font-family: var(--sans);
+    color: var(--bg);
+  }
+  .gate-input-wrap input[type="password"]::placeholder { color: var(--ink-faint); }
+  .gate-input-wrap input[type="password"]:focus {
     outline: 2px solid var(--accent-warm);
     outline-offset: 2px;
-    border-color: var(--accent-warm);
   }
-  .gate button {
+  .gate-input-wrap button {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--ink);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
+  .gate-input-wrap button:hover {
     background: var(--accent-warm);
     color: var(--accent);
-    border: none;
-    border-radius: 6px;
-    padding: 12px 16px;
-    font-family: var(--sans);
-    font-weight: 600;
-    font-size: 15px;
-    cursor: pointer;
-    transition: transform 0.15s ease;
+    transform: translateY(-50%) scale(1.06);
   }
-  .gate button:hover { transform: translateY(-2px); }
-  .gate .error {
+  .gate-error {
     color: var(--accent-warm);
     font-size: 14px;
-    margin: -4px 0 4px;
+    margin: 20px 0 0;
   }
 </style>
 </head>
 <body>
+  <div class="gate-glow" aria-hidden="true"><img src="/images/hero/glow.svg" alt=""></div>
   <div class="gate">
-    <span class="wordmark">Kelsey Guo</span>
-    <h1>This site is password protected</h1>
-    <p class="hint">Enter the password to continue.</p>
+    <div class="gate-icon" aria-hidden="true">🪄</div>
+    <h1>Enter password to continue</h1>
     <form method="POST" action="${AUTH_PATH}">
       <input type="hidden" name="redirect" value="${redirectTo}">
-      ${error ? '<p class="error">Wrong password &mdash; try again.</p>' : ""}
-      <input type="password" name="password" placeholder="Password" autofocus required>
-      <button type="submit">Enter</button>
+      <div class="gate-input-wrap">
+        <input type="password" name="password" placeholder="Password" autofocus required>
+        <button type="submit" aria-label="Submit">&rarr;</button>
+      </div>
     </form>
+    ${error ? '<p class="gate-error">Please try again, or contact me with questions 🙂</p>' : ""}
   </div>
 </body>
 </html>`;
