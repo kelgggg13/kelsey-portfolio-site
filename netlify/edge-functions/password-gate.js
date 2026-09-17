@@ -88,8 +88,8 @@ function gatePage({ redirectTo, error }) {
   }
   .gate-input-wrap input[type="password"]::placeholder { color: var(--ink-faint); }
   .gate-input-wrap input[type="password"]:focus {
-    outline: 2px solid var(--accent-warm);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 28px 6px rgba(248, 195, 185, 0.55);
   }
   .gate-input-wrap button {
     position: absolute;
