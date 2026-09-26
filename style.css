@@ -206,9 +206,8 @@ a.underline-link:hover {
 .home-hero h1,
 .home-hero .rotator-line {
   font-family: var(--sans);
-  font-weight: 500;
-  font-size: clamp(44px, 6.7vw, 96px);
-  letter-spacing: -0.01em;
+  font-weight: 400;
+  font-size: clamp(44px, 7.4vw, 96px);
 }
 .home-hero .rotator-line {
   color: var(--ink);
@@ -217,6 +216,7 @@ a.underline-link:hover {
   color: inherit;
 }
 .home-hero p.lede {
+  font-weight: 300;
   font-size: clamp(19px, 2.5vw, 36px);
   color: var(--ink);
   max-width: 900px;
