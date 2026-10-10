@@ -180,8 +180,8 @@ body.home .wrap {
 }
 @media (min-width: 900px) {
   body.home .wrap {
-    padding-left: clamp(72px, 20vw, 288px);
-    padding-right: clamp(72px, 20vw, 288px);
+    padding-left: clamp(72px, 10vw, 144px);
+    padding-right: clamp(72px, 10vw, 144px);
   }
 }
 body.home .site-nav {
