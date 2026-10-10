@@ -51,3 +51,43 @@ document.addEventListener('DOMContentLoaded', () => {
     el.classList.add('swap');
   }, 2600);
 });
+
+// Hero glow follows the cursor, easing toward it each frame instead of
+// snapping straight there.
+document.addEventListener('DOMContentLoaded', () => {
+  const hero = document.querySelector('.home-hero');
+  const glow = document.querySelector('.hero-glow');
+  if (!hero || !glow) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let targetX = null;
+  let targetY = null;
+  let currentX = 0;
+  let currentY = 0;
+  let raf = null;
+
+  const tick = () => {
+    currentX += (targetX - currentX) * 0.08;
+    currentY += (targetY - currentY) * 0.08;
+    glow.style.left = currentX + 'px';
+    glow.style.top = currentY + 'px';
+    glow.style.bottom = 'auto';
+    glow.style.transform = 'translate(-50%, -50%)';
+    if (Math.abs(targetX - currentX) > 0.5 || Math.abs(targetY - currentY) > 0.5) {
+      raf = requestAnimationFrame(tick);
+    } else {
+      raf = null;
+    }
+  };
+
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    targetX = e.clientX - rect.left;
+    targetY = e.clientY - rect.top;
+    if (currentX === 0 && currentY === 0) {
+      currentX = targetX;
+      currentY = targetY;
+    }
+    if (!raf) raf = requestAnimationFrame(tick);
+  });
+});

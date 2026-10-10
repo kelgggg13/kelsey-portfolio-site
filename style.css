@@ -178,6 +178,12 @@ body.home .wrap {
   padding-left: clamp(24px, 5vw, 72px);
   padding-right: clamp(24px, 5vw, 72px);
 }
+@media (min-width: 900px) {
+  body.home .wrap {
+    padding-left: clamp(72px, 20vw, 288px);
+    padding-right: clamp(72px, 20vw, 288px);
+  }
+}
 body.home .site-nav {
   padding-top: clamp(32px, 5vw, 72px);
   padding-bottom: 0;
@@ -204,6 +210,25 @@ body.home .nav-links a:hover {
   display: flex;
   align-items: flex-start;
   padding: clamp(72px, 11vw, 160px) 0 0;
+}
+.hero-glow {
+  position: absolute;
+  width: 510px;
+  height: 510px;
+  max-width: 60vw;
+  left: 81.3%;
+  bottom: 70px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: -1;
+}
+.hero-glow img {
+  position: absolute;
+  inset: -94.12%;
+  width: auto;
+  height: auto;
+  max-width: none;
+  display: block;
 }
 .home-hero > .wrap {
   min-width: 0;
