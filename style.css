@@ -213,14 +213,15 @@ body.home .nav-links a:hover {
 }
 .hero-glow {
   position: absolute;
-  width: 510px;
-  height: 510px;
+  width: 380px;
+  height: 380px;
   max-width: 60vw;
   left: 81.3%;
   bottom: 70px;
   transform: translateX(-50%);
   pointer-events: none;
   z-index: -1;
+  filter: saturate(2) brightness(1.2);
 }
 .hero-glow img {
   position: absolute;
