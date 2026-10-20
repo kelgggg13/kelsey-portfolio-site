@@ -1118,3 +1118,15 @@ html.lb-lock { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .lb, .lb-img { transition: none; }
 }
+
+.cs-hmw-band { padding: clamp(80px, 10vw, 144px) 0; }
+.cs-hmw-big {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(28px, 3.6vw, 52px);
+  line-height: 1.35;
+  text-align: center;
+  color: var(--ink);
+}
