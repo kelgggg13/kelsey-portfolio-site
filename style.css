@@ -849,11 +849,12 @@ body.case-v2 { --rule: #3A4256; }
 }
 .cs-figure img.flat { border-radius: 0; }
 .cs-caption {
-  margin: 16px 0 0;
+  margin: 16px auto 0;
   font-size: 14px;
   line-height: 1.5;
   color: var(--ink-faint);
   max-width: 720px;
+  text-align: center;
 }
 .cs-figure .cs-caption { margin-top: 20px; }
 .cs-figure-grid .cs-cap-cell p { margin: 12px 0 0; font-size: 14px; line-height: 1.5; color: var(--ink-faint); }
