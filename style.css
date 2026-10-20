@@ -994,3 +994,10 @@ body.case-v2 { --rule: #3A4256; }
 @media (max-width: 560px) {
   .cs-pains { grid-template-columns: minmax(0, 1fr); }
 }
+.cs-pains--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 1100px) {
+  .cs-pains--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 820px) {
+  .cs-pains--3 { grid-template-columns: minmax(0, 1fr); }
+}
