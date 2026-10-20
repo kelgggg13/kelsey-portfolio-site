@@ -52,12 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 2600);
 });
 
-// Hero glow follows the cursor, easing toward it each frame instead of
-// snapping straight there.
+// Glow follows the cursor across the whole page (fixed to the viewport),
+// easing toward it each frame instead of snapping straight there.
 document.addEventListener('DOMContentLoaded', () => {
-  const hero = document.querySelector('.home-hero');
   const glow = document.querySelector('.hero-glow');
-  if (!hero || !glow) return;
+  if (!glow) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   let targetX = null;
@@ -80,10 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  hero.addEventListener('mousemove', (e) => {
-    const rect = hero.getBoundingClientRect();
-    targetX = e.clientX - rect.left;
-    targetY = e.clientY - rect.top;
+  document.addEventListener('mousemove', (e) => {
+    targetX = e.clientX;
+    targetY = e.clientY;
     if (currentX === 0 && currentY === 0) {
       currentX = targetX;
       currentY = targetY;

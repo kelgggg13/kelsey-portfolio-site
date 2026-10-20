@@ -212,9 +212,9 @@ body.home .nav-links a:hover {
   padding: clamp(72px, 11vw, 160px) 0 0;
 }
 .hero-glow {
-  position: absolute;
-  width: 380px;
-  height: 380px;
+  position: fixed;
+  width: 510px;
+  height: 510px;
   max-width: 60vw;
   left: 81.3%;
   bottom: 70px;
