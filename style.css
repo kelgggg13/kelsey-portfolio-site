@@ -975,15 +975,6 @@ body.case-v2 { --rule: #3A4256; }
   border-radius: 50%;
   color: var(--accent-warm);
 }
-.cs-pain--stat .n {
-  display: block;
-  margin-bottom: 14px;
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: 44px;
-  line-height: 44px;
-  color: var(--accent-warm);
-}
 .cs-pain h3 {
   margin: 0 0 8px;
   font-family: var(--sans);
