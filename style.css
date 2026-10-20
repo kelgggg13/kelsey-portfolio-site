@@ -853,8 +853,11 @@ body.case-v2 { --rule: #3A4256; }
   font-size: 14px;
   line-height: 1.5;
   color: var(--ink-faint);
-  max-width: 720px;
+  max-width: 960px;
   text-align: center;
+}
+@media (min-width: 821px) {
+  .cs-caption { white-space: nowrap; }
 }
 .cs-figure .cs-caption { margin-top: 20px; }
 .cs-figure-grid .cs-cap-cell p { margin: 12px 0 0; font-size: 14px; line-height: 1.5; color: var(--ink-faint); }
