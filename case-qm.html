@@ -4,105 +4,289 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Queue Management - Kelsey Guo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="case-v2">
 
-  <nav class="site-nav">
-    <div class="wrap">
-      <a href="index.html" class="wordmark">Kelsey Guo</a>
-      <div class="nav-links">
-        <a href="about.html">About</a>
-        <a href="https://drive.google.com/file/d/1MKLHyuRDNJYFKnCXRcCWQ2kk3Nf8_HWo/view" target="_blank" rel="noopener">Resume</a>
+  <div class="cs-hero">
+    <nav class="site-nav">
+      <div class="wrap">
+        <a href="index.html" class="wordmark">Kelsey Guo</a>
+        <div class="nav-links">
+          <a href="about.html">About</a>
+          <a href="https://drive.google.com/file/d/1MKLHyuRDNJYFKnCXRcCWQ2kk3Nf8_HWo/view" target="_blank" rel="noopener">Resume</a>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <header class="case-header">
-    <div class="wrap">
-      <a class="back-link underline-link" href="index.html">← All work</a>
-      <h1>Queue Management</h1>
-      <dl class="meta-grid">
-        <div>
-          <dt>Team</dt>
-          <dd>Cohere Health<br>1 designer (me), 1 PM, 6 engineers</dd>
+    <header class="cs-hero-inner">
+      <div class="wrap">
+        <h1>Queue Management</h1>
+        <div class="cs-meta">
+          <p>Role &rarr; <strong>Sole product designer</strong></p>
+          <p>Timeline &rarr; <strong>Feb 2022 &ndash; Apr 2023</strong></p>
+          <p>Team &rarr; <strong>1 designer (me), 1 PM, 6 engineers</strong></p>
+          <p>Project type &rarr; <strong>0 &rarr; 1, then 1 &rarr; many</strong></p>
         </div>
-        <div>
-          <dt>Timeframe</dt>
-          <dd>Feb 2022 - Apr 2023</dd>
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <section class="cs-intro">
+      <div class="wrap">
+        <div class="cs-row">
+          <div>
+            <h2 class="cs-statement"><span>Designing a workforce management tool that empowered ops teams with automation, visibility, and control&mdash;while saving $320k annually</span></h2>
+            <div class="cs-body">
+              <h3>Context</h3>
+              <p>Prior authorization is the process where physicians request approval from health insurance companies before treating a patient. Insurers use it to control costs and make sure treatments are medically necessary. In theory, that&rsquo;s good for everyone. In practice, 93% of physicians report that it delays care, and 94% say it negatively affects patient outcomes.&sup1;</p>
+              <p>At Cohere Health, 6,000+ of these submissions land on the ops team every day, and each one has to be processed manually across fax intake, clinical review, and denial letter writing.</p>
+              <p class="cs-caption">&sup1; American Medical Association, 2024 Prior Authorization Physician Survey.</p>
+            </div>
+          </div>
         </div>
-        <div>
-          <dt>My role</dt>
-          <dd>Sole product designer</dd>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-row">
+          <div class="cs-num">01</div>
+          <h2 class="cs-heading">Project Intro</h2>
+          <div class="cs-body">
+            <h3>Project / Team / Role</h3>
+            <p>Queue Management / Cohere Health ops tools / Sole product designer, working with 1 PM and 6 engineers</p>
+            <h3>What I built</h3>
+            <p>A native workforce management tool that replaced Cohere&rsquo;s Salesforce setup for case queues. I started with a single queue (fax intake) as a proof of concept, then scaled the product to 15+ queues across the company.</p>
+            <h3>Timeline</h3>
+            <p>Feb 2022 &ndash; Apr 2023.</p>
+          </div>
         </div>
-        <div>
-          <dt>Skills</dt>
-          <dd>0 → 1 product design, research, data viz, systems thinking</dd>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-row">
+          <div class="cs-num">02</div>
+          <h2 class="cs-heading">The Problem</h2>
+          <div class="cs-body">
+            <p>The ops team used Salesforce to queue up cases every day. That meant:</p>
+            <ul>
+              <li>Lots of customization for each queue</li>
+              <li>Constantly switching between apps, since Salesforce isn&rsquo;t native to Cohere</li>
+              <li>No real-time reporting</li>
+              <li>Expensive: <strong>$1,600 per license</strong> for 250+ users</li>
+            </ul>
+            <p class="cs-hmw">So&hellip; how might we create a native, less manual queue management experience for intake specialists so that they can process faxes more efficiently?</p>
+          </div>
         </div>
-      </dl>
-    </div>
-  </header>
+        <figure class="cs-figure">
+          <img src="images/qm/salesforce.png" alt="Two Salesforce screens: a list of service requests and a single service request record">
+          <figcaption class="cs-caption">The Salesforce setup the ops team worked in every day.</figcaption>
+        </figure>
+      </div>
+    </section>
 
-  <main class="case-body">
-    <div class="wrap">
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-row">
+          <div class="cs-num">03</div>
+          <h2 class="cs-heading">Research &amp; Goals</h2>
+          <div class="cs-body">
+            <p>I combined desk research (product and competitive analysis) with interviews of intake specialists, starting with the fax intake workflow. That shaped three design goals, each with a success metric:</p>
+            <h3>1. Everything Salesforce does, but better</h3>
+            <p>Intake specialists can quickly find the highest-priority case, and supervisors spend under 20% of their time on case assignment.</p>
+            <h3>2. Agents feel accomplished when they finish a fax</h3>
+            <p>Over 80% user satisfaction, compared to Salesforce&rsquo;s baseline of 47%.</p>
+            <h3>3. Scale from 1 to 2, then to many</h3>
+            <p>Start with fax intake as a proof of concept, then extend to higher-complexity workflows (like nurse review) within three months.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <section>
-        <p>A native workforce management tool that replaced a $1,600-per-seat Salesforce instance for Cohere Health's ops team, processing 6,000+ prior-authorization submissions a day. It scaled from one queue to 15+ across the company and saved $320k a year.</p>
-        <blockquote>How might we create a native, less manual queue management experience for intake specialists so they can process faxes more efficiently?</blockquote>
-      </section>
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-row">
+          <div class="cs-num">04</div>
+          <h2 class="cs-heading">Everything Salesforce does, but better</h2>
+          <div class="cs-body">
+            <h3>Challenge</h3>
+            <p>Intake specialists didn&rsquo;t always know which cases to prioritize, which led to missed turnaround times (TAT). TAT is essential for compliance, and missing it can mean significant revenue loss.</p>
+            <p>Meanwhile, supervisors spent nearly <strong>75% of their time</strong> manually assigning cases, pulling them away from higher-value work like coaching and team development.</p>
+            <h3>Exploration</h3>
+            <p>Starting broad: how should a fax get assigned and worked on? I explored five directions, including &ldquo;case galaxy,&rdquo; a deliberate push-the-limit idea that surprisingly ended up informing the final solution.</p>
+          </div>
+        </div>
+        <figure class="cs-figure">
+          <img src="images/qm/v2/exploration-assignment.png" alt="Early sketches: a case preview card, a case galaxy, a personal queue, and a queue-versus-capacity dashboard">
+          <figcaption class="cs-caption">A case preview card, a priority-ranked queue dashboard, a side-by-side view of volume and team performance, a personal queue assigned each morning, and case galaxy with a &ldquo;Find work&rdquo; button.</figcaption>
+        </figure>
+        <div class="cs-row" style="margin-top: clamp(48px, 6vw, 88px);">
+          <div></div>
+          <h3 class="cs-heading" style="font-size: 20px;">Final designs</h3>
+          <div class="cs-body">
+            <p><strong>Intake specialists</strong> get one unmissable action: start the next case, and the system finds the highest-priority one for them. Queue and personal metrics sit above their case history.</p>
+          </div>
+        </div>
+        <figure class="cs-figure">
+          <div class="cs-figure-grid">
+            <img src="images/qm/v2/intake-dashboard.png" alt="Intake specialist dashboard with queue volume, a Start next case button, and case history">
+            <img src="images/qm/v2/intake-detail.png" alt="Loading state that reads Finding the most important case">
+          </div>
+          <figcaption class="cs-caption">Intake specialist view: one button fetches the highest-priority case in the queue.</figcaption>
+        </figure>
+        <div class="cs-row" style="margin-top: clamp(48px, 6vw, 88px);">
+          <div></div>
+          <div></div>
+          <div class="cs-body">
+            <p><strong>Supervisors</strong> get real-time queue and team metrics, red &ldquo;Unassigned&rdquo; chips that flag cases needing attention, search across unworked, in-progress, and completed cases, and extra tabs for greater autonomy: Queues, Reports, and Feature Flags.</p>
+          </div>
+        </div>
+        <figure class="cs-figure">
+          <img src="images/qm/v2/supervisor.png" alt="Supervisor queue view listing every case with tracking number, request date, and work due date">
+        </figure>
+      </div>
+    </section>
 
-      <section>
-        <h2>1. Everything Salesforce does, but better</h2>
-        <p>Intake specialists didn't always know which case to prioritize, causing missed turnaround times. Supervisors spent nearly 75% of their time manually assigning cases instead of coaching their teams.</p>
-        <div class="shot"><img src="images/qm/exploration-assignment.png" alt="Four early sketches: case preview card, case galaxy, personal queue, and a queue-vs-capacity dashboard"></div>
-        <p class="shot-caption">Four directions explored before converging: a case preview card, an auto-assigned personal queue, a capacity dashboard, and "case galaxy," a deliberate push-the-limit idea that ended up shaping the final design more than any of the safer options.</p>
-        <div class="shot"><img src="images/qm/intake-dashboard.png" alt="Intake specialist dashboard showing queue volume, a big blue Start next case button, and case history"></div>
-        <p class="shot-caption">Intake specialist view: one unmissable action to start the next case, efficiency metrics up top.</p>
-        <div class="shot"><img src="images/qm/supervisor-view.png" alt="Supervisor queue view listing all cases with tracking numbers, request dates, and work due dates"></div>
-        <p class="shot-caption">Supervisor view: real-time queue and team metrics, with red "Unassigned" chips flagging where attention is needed.</p>
-      </section>
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-row">
+          <div class="cs-num">05</div>
+          <h2 class="cs-heading">Agents feel accomplished when they finish a fax</h2>
+          <div class="cs-body">
+            <h3>Pushing back and reframing</h3>
+            <p>In talking to users, I found that a sense of accomplishment is what motivates intake specialists to stay engaged and do their best work. My PM called it a &ldquo;nice-to-have&rdquo; compared to functional needs and asked me not to spend time on it.</p>
+            <p>I pushed back with two points. Our baseline survey showed only <strong>47%</strong> of intake staff rated Salesforce a 4&ndash;5 out of 5, and we had set a goal of 80% for Queue Management. And one of Cohere&rsquo;s design principles is to &ldquo;inject joy into healthcare,&rdquo; which made this a great chance to do exactly that.</p>
+            <h3>Exploration</h3>
+            <p>I explored several &ldquo;work complete&rdquo; screens, from team impact totals to case completion time to randomly generated GIFs.</p>
+          </div>
+        </div>
+        <figure class="cs-figure">
+          <img class="flat" src="images/qm/work-complete-explorations.png" alt="Four work complete screen explorations: total team impact, case completion time, general metrics, and a randomly generated GIF">
+          <figcaption class="cs-caption">&ldquo;Work complete&rdquo; screen explorations.</figcaption>
+        </figure>
+        <div class="cs-row" style="margin-top: clamp(48px, 6vw, 88px);">
+          <div></div>
+          <h3 class="cs-heading" style="font-size: 20px;">Final design</h3>
+          <div class="cs-body">
+            <p>After each case, intake specialists see the outcome and tracking details for a sense of completion, queue and team metrics for real-time feedback, a randomly generated GIF to celebrate (we hand-selected 500+ cheerful, product-appropriate ones), and a button to start the next highest-priority case right away.</p>
+          </div>
+        </div>
+        <figure class="cs-figure">
+          <img src="images/qm/v2/work-complete.png" alt="Work complete screen: Case documented, a celebratory GIF, case details, and queue and team metrics">
+        </figure>
+        <div class="cs-big-stat">
+          <span class="n">94%</span>
+          <span class="l">of intake specialists rated Queue Management a 4 or 5 out of 5</span>
+        </div>
+        <div class="cs-quotes">
+          <blockquote class="cs-quote">&ldquo;The work complete screen makes me feel good. I like the affirmation.&rdquo;<cite>Amana, intake specialist</cite></blockquote>
+          <blockquote class="cs-quote">&ldquo;it&rsquo;s like flowing, I&rsquo;m just in the flow. I&rsquo;ve never worked so fast.&rdquo;<cite>Cristina, intake specialist</cite></blockquote>
+        </div>
+      </div>
+    </section>
 
-      <section>
-        <h2>2. Scale from 1 to 2, then to many</h2>
-        <p>Fax intake alone drove a 45% increase in cases worked per hour. Expanding to clinical review meant designing for a different definition of "good work": intake specialists optimize for speed and follow strict rules; clinical reviewers optimize for accuracy and use clinical judgment case by case.</p>
-        <div class="shot"><img src="images/qm/clinical-review.png" alt="Clinical review queue with a new skill set column and assignee dropdowns"></div>
-        <p class="shot-caption">Clinical review queue: same underlying system, tuned for a different kind of work.</p>
-        <p>To get past designing for just two personas, I built a configuration tool that let the team stand up new queues without custom engineering, which is what let Queue Management expand to 15+ queues company-wide.</p>
-      </section>
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-row">
+          <div class="cs-num">06</div>
+          <h2 class="cs-heading">Scale from 1 to 2, then to many</h2>
+          <div class="cs-body">
+            <p>Fax intake alone drove a <strong>45% increase in cases worked per hour</strong> within four months of researching, designing, and building it. The next step was expanding to clinical review.</p>
+            <h3>One product, two definitions of &ldquo;good work&rdquo;</h3>
+            <p>Intake specialists and clinical reviewers do very different work, so the same product had to serve two sets of needs.</p>
+            <div class="cs-compare">
+              <div>
+                <h4>Intake specialists</h4>
+                <ul>
+                  <li>Optimize for speed and volume</li>
+                  <li>Follow strict rules</li>
+                  <li>Motivated by efficiency metrics</li>
+                  <li>Non-clinical: treat all faxes equally</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Clinical reviewers</h4>
+                <ul>
+                  <li>Optimize for clinical accuracy</li>
+                  <li>Define their own workflows</li>
+                  <li>Guided by judgment, not metrics</li>
+                  <li>Clinically trained: context matters</li>
+                </ul>
+              </div>
+            </div>
+            <p style="margin-top: 20px;">That shaped how each queue felt. For fax intake, joy is momentum plus light delight; for clinical review, joy is confidence plus clarity.</p>
+          </div>
+        </div>
+        <figure class="cs-figure">
+          <img src="images/qm/v2/clinical-review.png" alt="Nurse review queue listing tracking numbers, request dates, work due dates, required skill set, and assignee">
+          <figcaption class="cs-caption">Clinical review queue: the same underlying system, tuned for a different kind of work.</figcaption>
+        </figure>
+        <div class="cs-row" style="margin-top: clamp(48px, 6vw, 88px);">
+          <div></div>
+          <h3 class="cs-heading" style="font-size: 20px;">Beyond two personas</h3>
+          <div class="cs-body">
+            <p>To scale beyond fax intake and clinical review, I also designed a configuration tool that let the team stand up new queues without custom engineering. That&rsquo;s what took Queue Management to <strong>15+ queues</strong> in the product.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <section>
-        <h2>3. Building Cohere's first in-app reporting product: visual exploration</h2>
-        <p>Because Salesforce lived outside our product, ops leaders had no real-time visibility into volume or performance. I broke the work down by user story, then explored six visual directions for the data, from grounded and familiar to imaginative and vibrant, before finding the sweet spot.</p>
-        <div class="shot"><img src="images/qm/exploration-reporting.png" alt="Six visual style explorations for a reporting dashboard, ranging from a plain data table to an illustrated, colorful layout"></div>
-        <p class="shot-caption">Style exploration: six directions for the same data, from grounded and familiar to imaginative and vibrant.</p>
-        <div class="shot"><img src="images/qm/reporting.png" alt="In-app reporting dashboard with a historical production bar chart and filter panel"></div>
-        <p class="shot-caption">Final design: real-time visibility, rebuilt natively where Salesforce couldn't reach.</p>
-      </section>
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-row">
+          <div class="cs-num">07</div>
+          <h2 class="cs-heading">Cohere&rsquo;s first data visualization product</h2>
+          <div class="cs-body">
+            <p>Because Salesforce lived outside the Cohere portal, ops leaders lacked real-time reporting, which limited visibility and slowed decision-making.</p>
+            <p>To make a first-ever data visualization product tractable, I broke the work down by user story, then explored six visual directions for the data, from grounded and familiar to imaginative and vibrant, before landing on the sweet spot.</p>
+          </div>
+        </div>
+        <figure class="cs-figure">
+          <img class="flat" src="images/qm/v2/exploration-reporting.png" alt="Six visual style explorations for a reporting dashboard, from a plain data table to an illustrated, colorful layout">
+          <figcaption class="cs-caption">Visual exploration: six directions for the same data.</figcaption>
+        </figure>
+        <figure class="cs-figure">
+          <img src="images/qm/v2/reporting.png" alt="In-app reporting dashboard with a historical production bar chart and filter panel">
+          <figcaption class="cs-caption">Final design: real-time visibility, built natively where Salesforce couldn&rsquo;t reach.</figcaption>
+        </figure>
+      </div>
+    </section>
 
-      <section>
-        <h2>Impact</h2>
+    <section class="cs-section cs-outcomes">
+      <div class="wrap">
+        <div class="cs-row">
+          <div></div>
+          <h2 class="cs-heading">Outcomes and Learnings</h2>
+          <div class="cs-body">
+            <p>In the first six months after launch, the team missed <strong>zero</strong> turnaround deadlines. Case assignment time dropped by <strong>86%</strong>, new queues scaled in under three months, and replacing Salesforce saved <strong>$320k</strong> a year in licensing.</p>
+            <h3>What I learned</h3>
+            <p><strong>Scale through configuration, not customization.</strong> Building the configuration tool early meant the system could grow to 15+ queues without engineering rebuilding it each time.</p>
+            <p><strong>Back a &ldquo;nice-to-have&rdquo; with data.</strong> Tying the joy work to the 47% satisfaction baseline and an existing design principle turned a pushback into a shipped feature that users loved.</p>
+            <p><strong>Break ambiguous 0 &rarr; 1 work into user stories.</strong> It made a first-ever data viz product tractable and gave stakeholders something real to react to early.</p>
+          </div>
+        </div>
         <div class="stat-grid">
           <div class="stat-card"><div class="num">0</div><div class="label">missed TAT in the first 6 months of launch</div></div>
           <div class="stat-card"><div class="num">86%</div><div class="label">reduction in case assignment time</div></div>
-          <div class="stat-card"><div class="num">3</div><div class="label">additional queues scaled to in under 3 months</div></div>
+          <div class="stat-card"><div class="num">&lt; 3 mo</div><div class="label">to scale to additional queues</div></div>
           <div class="stat-card"><div class="num">$320k</div><div class="label">in annual licensing savings</div></div>
         </div>
-      </section>
-
-      <section>
-        <h2>Takeaways</h2>
-        <p>Scale through configuration, not customization: building the config tool early meant the system could grow to 15+ queues without engineering rebuilding it each time. And breaking ambiguous 0 → 1 work (like a first-ever data viz product) into concrete user stories made it tractable and gave stakeholders something real to react to early.</p>
-      </section>
-
-    </div>
+      </div>
+    </section>
   </main>
 
-  <div class="case-nav-next">
-    <div class="wrap" style="display:flex; justify-content:space-between; align-items:baseline;">
+  <div class="cs-next">
+    <div class="wrap">
+      <a href="index.html#selected-work" class="underline-link">
+        <span class="label">&larr; Back</span>
+        <span class="title">All work</span>
+      </a>
       <a href="case-scanwell.html" class="underline-link">
-        <span class="label">Next project</span>
+        <span class="label">Next project &rarr;</span>
         <span class="title">At-Home COVID-19 Test</span>
       </a>
     </div>
