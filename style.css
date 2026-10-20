@@ -941,3 +941,18 @@ body.case-v2 { --rule: #3A4256; }
   line-height: 1.45;
   color: #0B0F19;
 }
+
+.cs-meme-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+.cs-meme-row img {
+  flex: 0 1 204px;
+  width: auto;
+  max-width: calc(50% - 8px);
+  height: auto;
+  border-radius: 14px;
+}
+.cs-memes .cs-caption { text-align: center; margin-left: auto; margin-right: auto; }
