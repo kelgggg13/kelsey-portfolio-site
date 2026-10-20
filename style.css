@@ -333,13 +333,16 @@ body.home .nav-links a:hover {
   max-width: none;
   display: block;
 }
-.page-glow-left { left: 15.6%; top: 625px; }
-.page-glow-right { left: 81.3%; top: 2575px; }
+.page-glow-left { left: 15.6%; top: 21.4%; }
+.page-glow-right { left: 81.3%; top: 88.2%; }
 
 /* Work cards */
 .work-list {
   display: grid;
   gap: 64px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
   padding-top: clamp(48px, 8.8vw, 127px);
 }
 .work-card {
@@ -371,21 +374,21 @@ body.home .nav-links a:hover {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: clamp(20px, 3.1vw, 40px);
+  padding: clamp(20px, 2.2vw, 32px);
 }
 .work-card-body h3 {
   margin: 0;
   font-family: var(--sans);
   font-weight: 500;
-  font-size: clamp(22px, 2.5vw, 36px);
+  font-size: clamp(22px, 2.1vw, 30px);
   line-height: 1.3;
 }
 .work-card-body p {
   margin: 0;
   font-family: var(--sans);
   font-weight: 400;
-  font-size: clamp(16px, 1.67vw, 24px);
-  line-height: 1.3;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.35;
 }
 .nowrap { white-space: nowrap; }
 .archive-link {
