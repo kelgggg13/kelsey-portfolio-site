@@ -588,12 +588,6 @@ a.underline-link:hover {
 .about-photo .media-placeholder {
   aspect-ratio: 3 / 4;
 }
-.about-links {
-  margin-top: 32px;
-  display: flex;
-  gap: 20px;
-  font-size: 15px;
-}
 @media (max-width: 720px) {
   .about-layout {
     grid-template-columns: 1fr;
