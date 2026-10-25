@@ -28,6 +28,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Gochi Hand';
+  src: url('fonts/gochi-hand/GochiHand-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ---------- Tokens ---------- */
 :root {
   --bg: #0B0F1A;
@@ -1174,12 +1182,14 @@ html.lb-lock { overflow: hidden; }
   border-radius: 2px;
 }
 .polaroid figcaption {
-  padding-top: 20px;
+  padding-top: 18px;
   text-align: center;
-  font-family: var(--serif);
-  font-size: 22px;
+  font-family: 'Gochi Hand', 'Comic Sans MS', cursive;
+  font-size: 26px;
   line-height: 1.2;
-  color: #0B0F19;
+  letter-spacing: 0.01em;
+  color: #1B1D26;
+  transform: rotate(-1.5deg);
 }
 @media (max-width: 720px) {
   .about-layout .about-photo { position: static; max-width: 320px; margin: 0 auto 24px; }
