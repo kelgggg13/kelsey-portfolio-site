@@ -172,38 +172,6 @@ a.underline-link:hover {
   margin: 0 0 28px;
 }
 
-/* ---------- Case study v2 header/gutters ---------- */
-body.case-v2 .wrap {
-  max-width: 1440px;
-  padding-left: clamp(24px, 5vw, 72px);
-  padding-right: clamp(24px, 5vw, 72px);
-}
-@media (min-width: 900px) {
-  body.case-v2 .wrap {
-    padding-left: clamp(72px, 10vw, 144px);
-    padding-right: clamp(72px, 10vw, 144px);
-  }
-}
-body.case-v2 .site-nav {
-  padding-top: clamp(32px, 5vw, 72px);
-  padding-bottom: 0;
-}
-body.case-v2 .wordmark {
-  font-size: clamp(24px, 2.2vw, 32px);
-  font-weight: 500;
-  line-height: 1.2;
-}
-body.case-v2 .nav-links {
-  gap: clamp(20px, 2.5vw, 36px);
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(18px, 1.7vw, 24px);
-}
-body.case-v2 .nav-links a,
-body.case-v2 .nav-links a:hover {
-  color: var(--ink);
-}
-
 .home-hero {
   position: relative;
   min-height: max(calc(100svh - 88px), 700px);
@@ -736,7 +704,7 @@ body.case-v2 { --rule: #3A4256; }
   margin: 0 0 clamp(72px, 10vw, 150px);
   font-family: var(--sans);
   font-weight: 400;
-  font-size: clamp(44px, 7.4vw, 96px);
+  font-size: clamp(40px, 5.4vw, 72px);
   line-height: 1.1;
 }
 .cs-meta {
