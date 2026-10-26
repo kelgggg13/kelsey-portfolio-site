@@ -1209,7 +1209,7 @@ html.lb-lock { overflow: hidden; }
 .stack-card {
   position: relative;
   z-index: var(--z, 1);
-  flex: 0 0 calc(100% / 2.68);
+  flex: 0 0 calc(100% / 2.76);
   display: block;
   border-radius: 24px;
   overflow: hidden;
@@ -1220,7 +1220,7 @@ html.lb-lock { overflow: hidden; }
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
               box-shadow 0.4s ease, filter 0.4s ease;
 }
-.stack-card + .stack-card { margin-left: calc(100% / 2.68 * -0.16); }
+.stack-card + .stack-card { margin-left: calc(100% / 2.76 * -0.12); }
 .stack-card:hover,
 .stack-card:focus-visible {
   z-index: 10;
