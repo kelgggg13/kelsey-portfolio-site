@@ -53,35 +53,46 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Glow follows the cursor across the whole page (fixed to the viewport),
-// easing toward it each frame instead of snapping straight there.
+// easing toward it each frame, and drifts through the color wheel as the
+// cursor travels (purple, pink, orange, yellow, green, blue, ...).
 document.addEventListener('DOMContentLoaded', () => {
   const glow = document.querySelector('.hero-glow');
   if (!glow) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+  const HUE_PER_PX = 0.22;
   let targetX = null;
   let targetY = null;
   let currentX = 0;
   let currentY = 0;
+  let lastX = null;
+  let lastY = null;
+  let hue = 285;
+  let targetHue = 285;
   let raf = null;
 
   const tick = () => {
     currentX += (targetX - currentX) * 0.08;
     currentY += (targetY - currentY) * 0.08;
+    hue += (targetHue - hue) * 0.05;
     glow.style.left = currentX + 'px';
     glow.style.top = currentY + 'px';
     glow.style.bottom = 'auto';
     glow.style.transform = 'translate(-50%, -50%)';
-    if (Math.abs(targetX - currentX) > 0.5 || Math.abs(targetY - currentY) > 0.5) {
-      raf = requestAnimationFrame(tick);
-    } else {
-      raf = null;
-    }
+    glow.style.setProperty('--hue', hue.toFixed(1));
+    const moving = Math.abs(targetX - currentX) > 0.5 || Math.abs(targetY - currentY) > 0.5;
+    const shifting = Math.abs(targetHue - hue) > 0.2;
+    raf = moving || shifting ? requestAnimationFrame(tick) : null;
   };
 
   document.addEventListener('mousemove', (e) => {
     targetX = e.clientX;
     targetY = e.clientY;
+    if (lastX !== null) {
+      targetHue += Math.hypot(e.clientX - lastX, e.clientY - lastY) * HUE_PER_PX;
+    }
+    lastX = e.clientX;
+    lastY = e.clientY;
     if (currentX === 0 && currentY === 0) {
       currentX = targetX;
       currentY = targetY;

@@ -188,24 +188,24 @@ a.underline-link:hover {
   padding: clamp(64px, 9vw, 128px) 0 0;
 }
 .hero-glow {
+  --hue: 285;
   position: fixed;
-  width: 510px;
-  height: 510px;
+  width: 280px;
+  height: 280px;
   max-width: 60vw;
+  max-height: 60vw;
   left: 81.3%;
   bottom: 70px;
   transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    hsl(var(--hue) 100% 68% / 0.6) 0%,
+    hsl(calc(var(--hue) - 35) 100% 62% / 0.3) 38%,
+    hsl(calc(var(--hue) - 35) 100% 60% / 0) 70%
+  );
   pointer-events: none;
   z-index: -1;
-  filter: saturate(2) brightness(1.2);
-}
-.hero-glow img {
-  position: absolute;
-  inset: -94.12%;
-  width: auto;
-  height: auto;
-  max-width: none;
-  display: block;
 }
 .home-hero > .wrap {
   min-width: 0;
