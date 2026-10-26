@@ -190,20 +190,24 @@ a.underline-link:hover {
 .hero-glow {
   --hue: 285;
   position: fixed;
-  width: 280px;
-  height: 280px;
-  max-width: 60vw;
-  max-height: 60vw;
+  width: 380px;
+  height: 380px;
+  max-width: 64vw;
+  max-height: 64vw;
   left: 81.3%;
   bottom: 70px;
   transform: translateX(-50%);
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    hsl(var(--hue) 100% 68% / 0.6) 0%,
-    hsl(calc(var(--hue) - 35) 100% 62% / 0.3) 38%,
-    hsl(calc(var(--hue) - 35) 100% 60% / 0) 70%
+    hsl(var(--hue) 100% 68% / 0.46) 0%,
+    hsl(calc(var(--hue) - 18) 100% 65% / 0.36) 14%,
+    hsl(calc(var(--hue) - 35) 100% 62% / 0.24) 30%,
+    hsl(calc(var(--hue) - 35) 100% 60% / 0.12) 50%,
+    hsl(calc(var(--hue) - 35) 100% 60% / 0.04) 72%,
+    hsl(calc(var(--hue) - 35) 100% 60% / 0) 100%
   );
+  filter: blur(22px);
   pointer-events: none;
   z-index: -1;
 }
