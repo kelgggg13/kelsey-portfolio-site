@@ -1221,7 +1221,6 @@ html.lb-lock { overflow: hidden; }
               box-shadow 0.4s ease, filter 0.4s ease;
 }
 .stack-card + .stack-card { margin-left: calc(100% / 2.68 * -0.16); }
-.stack-card + .stack-card .stack-body { padding-left: calc(23% + 18px); }
 .stack-card:hover,
 .stack-card:focus-visible {
   z-index: 10;
@@ -1271,7 +1270,6 @@ html.lb-lock { overflow: hidden; }
     transform: none;
   }
   .stack-card + .stack-card { margin-left: 0; }
-  .stack-card + .stack-card .stack-body { padding-left: 20px; }
   .stack-card:hover,
   .stack-card:focus-visible { transform: translateY(-6px); }
   .work-stack:hover .stack-card:not(:hover) { filter: none; }
