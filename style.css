@@ -1198,3 +1198,24 @@ html.lb-lock { overflow: hidden; }
   .work-stack--flat { gap: 16px; }
   .work-stack--flat .stack-card { flex: 0 0 80%; }
 }
+
+.back-home { margin: 40px 0 0; text-align: center; }
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 26px;
+  border: 1px solid var(--accent-warm);
+  border-radius: 999px;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--ink);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-pill:hover,
+.btn-pill:focus-visible {
+  background: var(--accent-warm);
+  color: #0B0F19;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(248, 195, 185, 0.3);
+}
