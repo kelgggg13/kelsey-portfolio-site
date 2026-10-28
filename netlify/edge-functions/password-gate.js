@@ -79,6 +79,7 @@ function gatePage({ redirectTo, error }) {
 <title>Kelsey Guo</title>
 <link rel="stylesheet" href="/style.css">
 <style>
+  html { scrollbar-gutter: stable; }
   html, body { height: 100%; margin: 0; overflow: hidden; background: var(--bg); cursor: auto; }
 
   /* Everything on the gate lives in one overlay so it can dissolve away on success. */
@@ -88,9 +89,9 @@ function gatePage({ redirectTo, error }) {
     z-index: 5;
     overflow: hidden;
     background: var(--bg);
-    transition: opacity 0.9s ease 0.1s;
+    transition: background-color 0.9s ease;
   }
-  .gate-overlay.out { opacity: 0; pointer-events: none; }
+  .gate-overlay.out { background-color: transparent; pointer-events: none; }
 
   .gate-glow {
     --hue: 285;
@@ -120,15 +121,21 @@ function gatePage({ redirectTo, error }) {
   .gate-main {
     position: relative;
     z-index: 3;
-    padding-top: clamp(96px, 16vh, 170px);
-    transition: opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease;
+    padding-top: calc(88px + clamp(40px, 6vw, 80px));
   }
   .gate-main h1 {
     margin: 0;
     font-family: var(--sans);
     font-weight: 400;
-    font-size: clamp(34px, 5.4vw, 72px);
+    font-size: clamp(40px, 5.4vw, 72px);
     line-height: 1.3;
+    transition: opacity 0.35s ease;
+  }
+  .gate-main .sub, .gate-main form, .gate-main .gate-error {
+    transition: opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease;
+  }
+  @media (max-width: 640px) {
+    .gate-main h1 { font-size: clamp(34px, 10vw, 48px); }
   }
   .gate-main .sub {
     margin: 10px 0 32px;
@@ -219,9 +226,13 @@ function gatePage({ redirectTo, error }) {
   }
 
   /* Success: the site loads behind the gate, blurred, then comes into focus. */
-  body.entering .gate-main { opacity: 0; transform: translateY(-18px); filter: blur(10px); }
-  body.entering .gate-teaser { filter: blur(0) brightness(1.05); transform: translateY(36px) scale(1.04); }
+  body.entering .gate-main .sub,
+  body.entering .gate-main form,
+  body.entering .gate-main .gate-error { opacity: 0; transform: translateY(-10px); filter: blur(6px); }
+  body.entering .gate-teaser { opacity: 0; filter: blur(0) brightness(1.05); transform: translateY(36px) scale(1.04); transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease; }
+  body.entering .gate-fade { opacity: 0; transition: opacity 0.6s ease; }
   body.entering .gate-glow { opacity: 0; transition: opacity 0.6s ease; }
+  body.entering .gate-main h1.handoff { opacity: 0; }
   .entry-frame {
     position: fixed;
     inset: 0;
@@ -232,12 +243,11 @@ function gatePage({ redirectTo, error }) {
     background: var(--bg);
     opacity: 0;
     filter: blur(34px) saturate(1.3);
-    transform: scale(1.08);
-    transition: opacity 0.5s ease, filter 1.3s cubic-bezier(0.2, 0.7, 0.2, 1), transform 1.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition: opacity 0.5s ease, filter 1.3s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
-  .entry-frame.show { opacity: 1; filter: none; transform: none; }
+  .entry-frame.show { opacity: 1; filter: none; }
   @media (prefers-reduced-motion: reduce) {
-    .gate-overlay, .gate-main, .gate-teaser, .entry-frame { transition: none; }
+    .gate-overlay, .gate-main h1, .gate-main .sub, .gate-main form, .gate-teaser, .entry-frame { transition: none; }
     .gate-shake { animation: none; }
   }
 </style>
@@ -247,7 +257,7 @@ function gatePage({ redirectTo, error }) {
     <div class="gate-glow" aria-hidden="true"></div>
 
     <main class="gate-main wrap">
-      <h1>hi, it&rsquo;s me. I&rsquo;m Kelsey.</h1>
+      <h1>Hi, I&rsquo;m Kelsey.</h1>
       <p class="sub">enter passcode to continue</p>
       <form id="gateForm" method="POST" action="${AUTH_PATH}">
         <input type="hidden" name="redirect" value="${escapeAttr(redirectTo)}">
@@ -309,6 +319,8 @@ function gatePage({ redirectTo, error }) {
           revealed = true;
           frame.classList.add('show');
           overlay.classList.add('out');
+          // the site is in focus behind the heading; now let the heading hand off
+          setTimeout(function () { document.querySelector('.gate-main h1').classList.add('handoff'); }, 1100);
           setTimeout(function () { location.replace(target); }, 1500);
         }
         frame.addEventListener('load', function () { setTimeout(reveal, 250); });
