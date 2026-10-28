@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const list = [
     "a Sr. Product Designer.",
     "designing for social good.",
-    "fascinated by human behaviors.",
+    "curious about humans.",
     "obsessed with the details."
   ];
 
