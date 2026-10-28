@@ -191,6 +191,7 @@ function gatePage({ redirectTo, error }) {
     font-size: 14px;
     min-height: 1.4em;
   }
+  .gate-error a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
   .gate-error[hidden] { display: block; visibility: hidden; }
   .gate-shake { animation: gate-shake 0.4s ease; }
   @keyframes gate-shake {
@@ -258,7 +259,7 @@ function gatePage({ redirectTo, error }) {
 
     <main class="gate-main wrap">
       <h1>Hi, I&rsquo;m Kelsey.</h1>
-      <p class="sub">psst, got the password?</p>
+      <p class="sub">psst, got the passcode?</p>
       <form id="gateForm" method="POST" action="${AUTH_PATH}">
         <input type="hidden" name="redirect" value="${escapeAttr(redirectTo)}">
         <div class="gate-input-wrap">
@@ -266,7 +267,7 @@ function gatePage({ redirectTo, error }) {
           <button type="submit" aria-label="Submit">&rarr;</button>
         </div>
       </form>
-      <p class="gate-error" id="gateError"${error ? "" : " hidden"}>hmm, that’s not it. try again, or say hi if you’re stuck :)</p>
+      <p class="gate-error" id="gateError"${error ? "" : " hidden"}>hmm, that’s not it. try again, or <a href="mailto:kmguo13@gmail.com">say hi</a> if you’re stuck :)</p>
     </main>
 
     <div class="gate-teaser" aria-hidden="true">
@@ -331,11 +332,13 @@ function gatePage({ redirectTo, error }) {
         e.preventDefault();
         if (busy) return;
         busy = true;
+        // build the body first: disabled inputs are left out of FormData
+        var body = new FormData(form);
         input.disabled = true;
         errorEl.hidden = true;
         fetch('${AUTH_PATH}', {
           method: 'POST',
-          body: new FormData(form),
+          body: body,
           headers: { 'X-Gate': '1' },
           credentials: 'same-origin'
         })
