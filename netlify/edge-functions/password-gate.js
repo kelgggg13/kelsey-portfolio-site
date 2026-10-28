@@ -83,8 +83,9 @@ function gatePage({ redirectTo, error }) {
   html, body { height: 100%; margin: 0; overflow: hidden; background: var(--bg); cursor: auto; }
 
   /* Everything on the gate lives in one overlay so it can dissolve away on success. */
+  /* absolute, not fixed: it then sizes to the page (minus any scrollbar) just like the homepage, so the centered column lines up exactly */
   .gate-overlay {
-    position: fixed;
+    position: absolute;
     inset: 0;
     z-index: 5;
     overflow: hidden;
@@ -137,13 +138,17 @@ function gatePage({ redirectTo, error }) {
   @media (max-width: 640px) {
     .gate-main h1 { font-size: clamp(34px, 10vw, 48px); }
   }
+  /* same type as the homepage lede ("Currently designing...") */
   .gate-main .sub {
-    margin: 10px 0 32px;
+    margin: 25px 0 32px;
     font-family: var(--sans);
     font-weight: 300;
     font-size: clamp(18px, 1.9vw, 28px);
-    line-height: 1.5;
-    color: var(--ink-soft);
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  @media (max-width: 640px) {
+    .gate-main .sub { font-size: 19px; }
   }
 
   .gate-input-wrap { position: relative; width: min(320px, 100%); }
@@ -213,8 +218,9 @@ function gatePage({ redirectTo, error }) {
     z-index: 1;
     transition: filter 1s ease, transform 1s ease;
   }
-  .gate-teaser .stack-card { flex: 0 0 min(390px, 36vw); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); }
-  .gate-teaser .stack-card + .stack-card { margin-left: -42px; }
+  /* the stack uses the homepage's .wrap + .work-stack geometry so its left edge lines up with the heading */
+  .gate-teaser .wrap { width: 100%; }
+  .gate-teaser .stack-card { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); }
   .gate-fade {
     position: absolute;
     left: 0;
@@ -271,9 +277,13 @@ function gatePage({ redirectTo, error }) {
     </main>
 
     <div class="gate-teaser" aria-hidden="true">
-      <div class="stack-card" style="--r:-4deg; --y:6px; --z:3;"><div class="stack-media stack-media--pink"><img src="/images/home/qm.png" alt=""></div><div class="stack-body"><h3>Queue Management</h3><p>How I led the design of a workforce management tool</p></div></div>
-      <div class="stack-card" style="--r:3deg; --y:-8px; --z:2;"><div class="stack-media stack-media--yellow"><img src="/images/home/scanwell.png" alt=""></div><div class="stack-body"><h3>At-Home COVID-19 Test</h3><p>How our team shipped the first digitally read test</p></div></div>
-      <div class="stack-card" style="--r:-3.5deg; --y:8px; --z:1;"><div class="stack-media stack-media--blue"><img src="/images/home/fax.png" alt=""></div><div class="stack-body"><h3>ML-enabled Fax Intake</h3><p>How I redesigned fax intake with AI</p></div></div>
+      <div class="wrap">
+        <div class="work-stack">
+          <div class="stack-card" style="--r:-4deg; --y:6px; --z:3;"><div class="stack-media stack-media--pink"><img src="/images/home/qm.png" alt=""></div><div class="stack-body"><h3>Queue Management</h3><p>How I led the design of a workforce management tool</p></div></div>
+          <div class="stack-card" style="--r:3deg; --y:-8px; --z:2;"><div class="stack-media stack-media--yellow"><img src="/images/home/scanwell.png" alt=""></div><div class="stack-body"><h3>At-Home COVID-19 Test</h3><p>How our team shipped the first digitally read test</p></div></div>
+          <div class="stack-card" style="--r:-3.5deg; --y:8px; --z:1;"><div class="stack-media stack-media--blue"><img src="/images/home/fax.png" alt=""></div><div class="stack-body"><h3>ML-enabled Fax Intake</h3><p>How I redesigned fax intake with AI</p></div></div>
+        </div>
+      </div>
     </div>
     <div class="gate-fade"></div>
   </div>
