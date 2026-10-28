@@ -64,13 +64,35 @@ function gatePage({ redirectTo, error }) {
 <link rel="stylesheet" href="/style.css">
 <style>
   body { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 100vh; cursor: auto; }
-  .gate-glow { position: fixed; width: 620px; height: 620px; right: -140px; bottom: -140px; pointer-events: none; z-index: 0; }
-  .gate-glow img { position: absolute; inset: -94.12%; width: auto; height: auto; max-width: none; display: block; }
+  .gate-glow {
+    --hue: 285;
+    position: fixed;
+    width: 380px;
+    height: 380px;
+    max-width: 64vw;
+    max-height: 64vw;
+    left: 81.3%;
+    bottom: 70px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      hsl(var(--hue) 100% 68% / 0.46) 0%,
+      hsl(calc(var(--hue) - 18) 100% 65% / 0.36) 14%,
+      hsl(calc(var(--hue) - 35) 100% 62% / 0.24) 30%,
+      hsl(calc(var(--hue) - 35) 100% 60% / 0.12) 50%,
+      hsl(calc(var(--hue) - 35) 100% 60% / 0.04) 72%,
+      hsl(calc(var(--hue) - 35) 100% 60% / 0) 100%
+    );
+    filter: blur(22px);
+    pointer-events: none;
+    z-index: 0;
+  }
   .gate { position: relative; z-index: 1; max-width: 640px; width: 100%; padding: 0 32px; text-align: center; }
   .gate-icon { font-size: 40px; margin-bottom: 20px; line-height: 1; }
   .gate h1 {
-    font-family: var(--serif);
-    font-weight: 500;
+    font-family: var(--sans);
+    font-weight: 400;
     font-size: clamp(20px, 3.4vw, 40px);
     line-height: 1.15;
     margin: 0 0 36px;
@@ -123,7 +145,7 @@ function gatePage({ redirectTo, error }) {
 </style>
 </head>
 <body>
-  <div class="gate-glow" aria-hidden="true"><img src="/images/hero/glow.svg" alt=""></div>
+  <div class="gate-glow" aria-hidden="true"></div>
   <div class="gate">
     <div class="gate-icon" aria-hidden="true">🪄</div>
     <h1>Enter password to continue</h1>
@@ -157,26 +179,32 @@ function gatePage({ redirectTo, error }) {
       var glow = document.querySelector('.gate-glow');
       if (!glow || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      var targetX = null, targetY = null, currentX = 0, currentY = 0, raf = null;
+      var HUE_PER_PX = 0.22;
+      var targetX = null, targetY = null, currentX = 0, currentY = 0;
+      var lastX = null, lastY = null, hue = 285, targetHue = 285, raf = null;
 
       function tick() {
         currentX += (targetX - currentX) * 0.08;
         currentY += (targetY - currentY) * 0.08;
+        hue += (targetHue - hue) * 0.05;
         glow.style.left = currentX + 'px';
         glow.style.top = currentY + 'px';
-        glow.style.right = 'auto';
         glow.style.bottom = 'auto';
         glow.style.transform = 'translate(-50%, -50%)';
-        if (Math.abs(targetX - currentX) > 0.5 || Math.abs(targetY - currentY) > 0.5) {
-          raf = requestAnimationFrame(tick);
-        } else {
-          raf = null;
-        }
+        glow.style.setProperty('--hue', hue.toFixed(1));
+        var moving = Math.abs(targetX - currentX) > 0.5 || Math.abs(targetY - currentY) > 0.5;
+        var shifting = Math.abs(targetHue - hue) > 0.2;
+        raf = (moving || shifting) ? requestAnimationFrame(tick) : null;
       }
 
       document.addEventListener('mousemove', function (e) {
         targetX = e.clientX;
         targetY = e.clientY;
+        if (lastX !== null) {
+          targetHue += Math.hypot(e.clientX - lastX, e.clientY - lastY) * HUE_PER_PX;
+        }
+        lastX = e.clientX;
+        lastY = e.clientY;
         if (currentX === 0 && currentY === 0) {
           currentX = targetX;
           currentY = targetY;
