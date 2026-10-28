@@ -1181,3 +1181,20 @@ html.lb-lock { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .stack-card { transition: none; }
 }
+
+/* Archive: regular side-by-side cards using the homepage card styling */
+.stack-media--green { background: #5FD08A; }
+.stack-media--purple { background: #B08CFF; }
+.work-stack--flat { gap: 28px; align-items: stretch; }
+.work-stack--flat .stack-card { display: flex; flex-direction: column; }
+.work-stack--flat .stack-card {
+  flex: 0 0 min(372px, 100%);
+  margin-left: 0;
+}
+.work-stack--flat .stack-card + .stack-card { margin-left: 0; }
+.work-stack--flat .stack-media { aspect-ratio: 3 / 2; }
+.work-stack--flat .stack-media img { object-fit: contain; }
+@media (max-width: 720px) {
+  .work-stack--flat { gap: 16px; }
+  .work-stack--flat .stack-card { flex: 0 0 80%; }
+}
