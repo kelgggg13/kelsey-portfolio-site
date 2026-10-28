@@ -4,6 +4,12 @@ const AUTH_PATH = "/__auth";
 
 const STATIC_EXTENSIONS = /\.(css|js|png|jpe?g|svg|otf|woff2?|ico|webmanifest|gif|mp4)$/i;
 
+const escapeAttr = (s) =>
+  String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+// Only same-site paths are allowed as a post-login destination.
+const safePath = (p) => (typeof p === "string" && /^\/(?!\/)/.test(p) ? p : "/");
+
 export default async (request, context) => {
   const url = new URL(request.url);
 
@@ -16,17 +22,27 @@ export default async (request, context) => {
   if (url.pathname === AUTH_PATH && request.method === "POST") {
     const form = await request.formData();
     const attempt = form.get("password") || "";
-    const redirectTo = form.get("redirect") || "/";
+    const redirectTo = safePath(form.get("redirect"));
+    const wantsJson = request.headers.get("x-gate") === "1";
+    const cookie = `${COOKIE_NAME}=${PASSWORD}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax`;
 
     if (attempt === PASSWORD) {
+      if (wantsJson) {
+        const headers = new Headers({ "content-type": "application/json" });
+        headers.append("Set-Cookie", cookie);
+        return new Response(JSON.stringify({ ok: true, redirect: redirectTo }), { status: 200, headers });
+      }
       const headers = new Headers({ Location: redirectTo });
-      headers.append(
-        "Set-Cookie",
-        `${COOKIE_NAME}=${PASSWORD}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax`
-      );
+      headers.append("Set-Cookie", cookie);
       return new Response(null, { status: 302, headers });
     }
 
+    if (wantsJson) {
+      return new Response(JSON.stringify({ ok: false }), {
+        status: 401,
+        headers: { "content-type": "application/json" },
+      });
+    }
     return new Response(gatePage({ redirectTo, error: true }), {
       status: 401,
       headers: { "content-type": "text/html; charset=utf-8" },
@@ -48,7 +64,7 @@ export default async (request, context) => {
     return context.next();
   }
 
-  return new Response(gatePage({ redirectTo: url.pathname + url.search, error: false }), {
+  return new Response(gatePage({ redirectTo: safePath(url.pathname + url.search), error: false }), {
     status: 401,
     headers: { "content-type": "text/html; charset=utf-8" },
   });
@@ -63,10 +79,22 @@ function gatePage({ redirectTo, error }) {
 <title>Kelsey Guo</title>
 <link rel="stylesheet" href="/style.css">
 <style>
-  body { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 100vh; cursor: auto; }
+  html, body { height: 100%; margin: 0; overflow: hidden; background: var(--bg); cursor: auto; }
+
+  /* Everything on the gate lives in one overlay so it can dissolve away on success. */
+  .gate-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    overflow: hidden;
+    background: var(--bg);
+    transition: opacity 0.9s ease 0.1s;
+  }
+  .gate-overlay.out { opacity: 0; pointer-events: none; }
+
   .gate-glow {
     --hue: 285;
-    position: fixed;
+    position: absolute;
     width: 380px;
     height: 380px;
     max-width: 64vw;
@@ -88,17 +116,30 @@ function gatePage({ redirectTo, error }) {
     pointer-events: none;
     z-index: 0;
   }
-  .gate { position: relative; z-index: 1; max-width: 640px; width: 100%; padding: 0 32px; text-align: center; }
-  .gate-icon { font-size: 40px; margin-bottom: 20px; line-height: 1; }
-  .gate h1 {
+
+  .gate-main {
+    position: relative;
+    z-index: 3;
+    padding-top: clamp(96px, 16vh, 170px);
+    transition: opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease;
+  }
+  .gate-main h1 {
+    margin: 0;
     font-family: var(--sans);
     font-weight: 400;
-    font-size: clamp(20px, 3.4vw, 40px);
-    line-height: 1.15;
-    margin: 0 0 36px;
-    white-space: nowrap;
+    font-size: clamp(34px, 5.4vw, 72px);
+    line-height: 1.3;
   }
-  .gate-input-wrap { position: relative; max-width: 320px; margin: 0 auto; }
+  .gate-main .sub {
+    margin: 10px 0 32px;
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: clamp(18px, 1.9vw, 28px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .gate-input-wrap { position: relative; width: min(320px, 100%); }
   .gate-input-wrap input[type="password"] {
     width: 100%;
     background: var(--ink);
@@ -138,41 +179,161 @@ function gatePage({ redirectTo, error }) {
     transform: translateY(-50%) scale(1.06);
   }
   .gate-error {
+    margin: 20px 0 0;
     color: var(--accent-warm);
     font-size: 14px;
-    margin: 20px 0 0;
+    min-height: 1.4em;
+  }
+  .gate-error[hidden] { display: block; visibility: hidden; }
+  .gate-shake { animation: gate-shake 0.4s ease; }
+  @keyframes gate-shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+  }
+
+  /* Locked teaser of the project stack */
+  .gate-teaser {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -40px;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    filter: blur(1.5px) brightness(0.85) saturate(1.05);
+    z-index: 1;
+    transition: filter 1s ease, transform 1s ease;
+  }
+  .gate-teaser .stack-card { flex: 0 0 min(390px, 36vw); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); }
+  .gate-teaser .stack-card + .stack-card { margin-left: -42px; }
+  .gate-fade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 30%;
+    background: linear-gradient(to top, var(--bg) 2%, transparent);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Success: the site loads behind the gate, blurred, then comes into focus. */
+  body.entering .gate-main { opacity: 0; transform: translateY(-18px); filter: blur(10px); }
+  body.entering .gate-teaser { filter: blur(0) brightness(1.05); transform: translateY(36px) scale(1.04); }
+  body.entering .gate-glow { opacity: 0; transition: opacity 0.6s ease; }
+  .entry-frame {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    z-index: 1;
+    background: var(--bg);
+    opacity: 0;
+    filter: blur(34px) saturate(1.3);
+    transform: scale(1.08);
+    transition: opacity 0.5s ease, filter 1.3s cubic-bezier(0.2, 0.7, 0.2, 1), transform 1.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .entry-frame.show { opacity: 1; filter: none; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .gate-overlay, .gate-main, .gate-teaser, .entry-frame { transition: none; }
+    .gate-shake { animation: none; }
   }
 </style>
 </head>
 <body>
-  <div class="gate-glow" aria-hidden="true"></div>
-  <div class="gate">
-    <div class="gate-icon" aria-hidden="true">🪄</div>
-    <h1>Enter password to continue</h1>
-    <form method="POST" action="${AUTH_PATH}">
-      <input type="hidden" name="redirect" value="${redirectTo}">
-      <div class="gate-input-wrap">
-        <input type="password" name="password" placeholder="Password" autofocus required>
-        <button type="submit" aria-label="Submit">&rarr;</button>
-      </div>
-    </form>
-    ${error ? '<p class="gate-error">Please try again, or contact me with questions :)</p>' : ""}
+  <div class="gate-overlay" id="gateOverlay">
+    <div class="gate-glow" aria-hidden="true"></div>
+
+    <main class="gate-main wrap">
+      <h1>hi, it&rsquo;s me. I&rsquo;m Kelsey.</h1>
+      <p class="sub">enter passcode to continue</p>
+      <form id="gateForm" method="POST" action="${AUTH_PATH}">
+        <input type="hidden" name="redirect" value="${escapeAttr(redirectTo)}">
+        <div class="gate-input-wrap">
+          <input type="password" name="password" placeholder="passcode" autocomplete="current-password" autofocus required>
+          <button type="submit" aria-label="Submit">&rarr;</button>
+        </div>
+      </form>
+      <p class="gate-error" id="gateError"${error ? "" : " hidden"}>Please try again, or contact me with questions :)</p>
+    </main>
+
+    <div class="gate-teaser" aria-hidden="true">
+      <div class="stack-card" style="--r:-4deg; --y:6px; --z:3;"><div class="stack-media stack-media--pink"><img src="/images/home/qm.png" alt=""></div><div class="stack-body"><h3>Queue Management</h3><p>How I led the design of a workforce management tool</p></div></div>
+      <div class="stack-card" style="--r:3deg; --y:-8px; --z:2;"><div class="stack-media stack-media--yellow"><img src="/images/home/scanwell.png" alt=""></div><div class="stack-body"><h3>At-Home COVID-19 Test</h3><p>How our team shipped the first digitally read test</p></div></div>
+      <div class="stack-card" style="--r:-3.5deg; --y:8px; --z:1;"><div class="stack-media stack-media--blue"><img src="/images/home/fax.png" alt=""></div><div class="stack-body"><h3>ML-enabled Fax Intake</h3><p>How I redesigned fax intake with AI</p></div></div>
+    </div>
+    <div class="gate-fade"></div>
   </div>
+
   <script>
     (function () {
-      var pwInput = document.querySelector('.gate-input-wrap input[type="password"]');
-      var form = pwInput ? pwInput.closest('form') : null;
-      if (pwInput && form) {
-        pwInput.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter') {
-            if (typeof form.requestSubmit === 'function') {
-              form.requestSubmit();
-            } else {
-              form.submit();
-            }
-          }
-        });
+      var overlay = document.getElementById('gateOverlay');
+      var form = document.getElementById('gateForm');
+      var input = form.querySelector('input[type="password"]');
+      var errorEl = document.getElementById('gateError');
+      var busy = false;
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Enter key submits (the arrow button is the secondary trigger).
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          if (typeof form.requestSubmit === 'function') form.requestSubmit();
+          else form.submit();
+        }
+      });
+
+      function fail() {
+        busy = false;
+        input.disabled = false;
+        errorEl.hidden = false;
+        input.classList.remove('gate-shake');
+        void input.offsetWidth;
+        input.classList.add('gate-shake');
+        input.select();
       }
+
+      function enter(target) {
+        if (reduced) { location.replace(target); return; }
+        document.body.classList.add('entering');
+        var frame = document.createElement('iframe');
+        frame.className = 'entry-frame';
+        frame.setAttribute('aria-hidden', 'true');
+        frame.tabIndex = -1;
+        frame.src = target;
+        document.body.insertBefore(frame, overlay);
+        var revealed = false;
+        function reveal() {
+          if (revealed) return;
+          revealed = true;
+          frame.classList.add('show');
+          overlay.classList.add('out');
+          setTimeout(function () { location.replace(target); }, 1500);
+        }
+        frame.addEventListener('load', function () { setTimeout(reveal, 250); });
+        setTimeout(reveal, 2500);
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (busy) return;
+        busy = true;
+        input.disabled = true;
+        errorEl.hidden = true;
+        fetch('${AUTH_PATH}', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'X-Gate': '1' },
+          credentials: 'same-origin'
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            if (d && d.ok) enter(d.redirect || '/');
+            else fail();
+          })
+          .catch(fail);
+      });
     })();
 
     (function () {
