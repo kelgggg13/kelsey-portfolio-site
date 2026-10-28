@@ -258,7 +258,7 @@ function gatePage({ redirectTo, error }) {
 
     <main class="gate-main wrap">
       <h1>Hi, I&rsquo;m Kelsey.</h1>
-      <p class="sub">enter passcode to continue</p>
+      <p class="sub">psst, got the password?</p>
       <form id="gateForm" method="POST" action="${AUTH_PATH}">
         <input type="hidden" name="redirect" value="${escapeAttr(redirectTo)}">
         <div class="gate-input-wrap">
@@ -266,7 +266,7 @@ function gatePage({ redirectTo, error }) {
           <button type="submit" aria-label="Submit">&rarr;</button>
         </div>
       </form>
-      <p class="gate-error" id="gateError"${error ? "" : " hidden"}>Please try again, or contact me with questions :)</p>
+      <p class="gate-error" id="gateError"${error ? "" : " hidden"}>hmm, that’s not it. try again, or say hi if you’re stuck :)</p>
     </main>
 
     <div class="gate-teaser" aria-hidden="true">
