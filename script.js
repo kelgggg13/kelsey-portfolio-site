@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const list = [
-    "designing for social good.",
     "a Sr. Product Designer.",
-    "a researcher at heart.",
+    "designing for social good.",
+    "fascinated by human behaviors.",
     "obsessed with the details."
   ];
 
