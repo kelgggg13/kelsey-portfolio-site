@@ -8,7 +8,8 @@
 
   function count(card) {
     var n = card.querySelector('.n');
-    var to = n ? parseInt(n.getAttribute('data-to'), 10) : 0;
+    var to = n ? parseFloat(n.getAttribute('data-to')) : 0;
+    var dec = n ? parseInt(n.getAttribute('data-dec') || '0', 10) : 0;
     if (!to) return;
     var start = null;
     var duration = 1100;
@@ -16,7 +17,7 @@
     function step(t) {
       if (start === null) start = t;
       var p = Math.min((t - start) / duration, 1);
-      n.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+      n.textContent = (to * (1 - Math.pow(1 - p, 3))).toFixed(dec);
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);

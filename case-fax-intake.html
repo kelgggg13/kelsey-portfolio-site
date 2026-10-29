@@ -4,69 +4,91 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ML-enabled Authorization Fax Intake - Kelsey Guo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="case-v2">
 
-  <nav class="site-nav">
-    <div class="wrap">
-      <a href="index.html" class="wordmark">Kelsey Guo</a>
-      <div class="nav-links">
-        <a href="about.html">About</a>
-        <a href="https://drive.google.com/file/d/1MKLHyuRDNJYFKnCXRcCWQ2kk3Nf8_HWo/view" target="_blank" rel="noopener">Resume</a>
+  <div class="cs-hero cs-hero--blue">
+    <nav class="site-nav">
+      <div class="wrap">
+        <a href="index.html" class="wordmark">Kelsey Guo</a>
+        <div class="nav-links">
+          <a href="about.html">About</a>
+          <a href="https://drive.google.com/file/d/1MKLHyuRDNJYFKnCXRcCWQ2kk3Nf8_HWo/view" target="_blank" rel="noopener">Resume</a>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <header class="case-header">
-    <div class="wrap">
-      <a class="back-link underline-link" href="index.html">← All work</a>
-      <h1>ML-enabled Authorization Fax Intake</h1>
-      <dl class="meta-grid">
-        <div>
-          <dt>Team</dt>
-          <dd>Cohere Health<br>Design, ML/data science, engineering</dd>
+    <header class="cs-hero-inner">
+      <div class="wrap">
+        <h1>ML-enabled Authorization Fax Intake</h1>
+        <div class="cs-meta">
+          <p>Role: <strong>Product designer</strong></p>
+          <p>Timeline: <strong>Ongoing</strong></p>
+          <p>Team: <strong>Cohere Health: design, ML/data science, engineering</strong></p>
+          <p>Skills: <strong>AI/ML product design, user research, workflow redesign</strong></p>
         </div>
-        <div>
-          <dt>Timeframe</dt>
-          <dd>Ongoing</dd>
-        </div>
-        <div>
-          <dt>My role</dt>
-          <dd>Product designer</dd>
-        </div>
-        <div>
-          <dt>Skills</dt>
-          <dd>AI/ML product design, user research, workflow redesign</dd>
-        </div>
-      </dl>
-    </div>
-  </header>
+      </div>
+    </header>
+  </div>
 
-  <main class="case-body">
-    <div class="wrap">
+  <main>
+    <section class="cs-intro">
+      <div class="wrap">
+        <div class="cs-row">
+          <div>
+            <h2 class="cs-statement"><span>Redesigning an ML-powered fax intake co-pilot so specialists work directly against the fax while the form fills itself in</span></h2>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <section>
-        <p>I led the redesign of an ML-powered fax authorization intake co-pilot. Previously, intake specialists had to manually re-key every field from an incoming fax into a form before the data could reach the Cohere portal. I redesigned the flow so the fax document sits on one side and the form on the other, letting specialists work directly against the source while OCR runs in the background — as the model identifies fields on the fax, the matching inputs auto-fill.</p>
-        <div class="shot"><img src="images/fax-intake/before.png" alt="Before: the fax intake form opens in a new window, with no machine learning suggestions"></div>
-        <p class="shot-caption">Before: the form opened in a new window, disconnected from the fax, with nothing auto-filled.</p>
-        <div class="shot"><img src="images/fax-intake/after.png" alt="After: the fax intake form opens in the same window, with many fields automatically filled by machine learning"></div>
-        <p class="shot-caption">After: the form opens alongside the fax in the same window, with ML auto-filling the fields it can read.</p>
-        <p>To ground the redesign and guide ongoing iteration, I ran 11 user interviews alongside a time study. The output was a journey map that product teams across Cohere still reference today.</p>
-        <div class="shot"><img src="images/fax-intake/journey-map.png" alt="Fax intake journey map plotting efficiency and accuracy across nine steps, from loading the fax to submitting the authorization, with pain points and user quotes at each stage"></div>
-        <p class="shot-caption">Journey map from the interviews and time study, still referenced by product teams across Cohere to prioritize new work.</p>
-      </section>
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-row">
+          <div class="cs-num">01</div>
+          <h2 class="cs-heading">Redesigning the flow</h2>
+          <div class="cs-body">
+            <p>I led the redesign of an ML-powered fax authorization intake co-pilot. Previously, intake specialists had to manually re-key every field from an incoming fax into a form before the data could reach the Cohere portal. I redesigned the flow so the fax document sits on one side and the form on the other, letting specialists work directly against the source while OCR runs in the background &mdash; as the model identifies fields on the fax, the matching inputs auto-fill.</p>
+          </div>
+        </div>
+        <figure class="cs-figure">
+          <img src="images/fax-intake/before-clean.webp" alt="Before: the fax intake form opens in a new window, with no machine learning suggestions">
+          <figcaption class="cs-caption">Before: the form opened in a new window, disconnected from the fax, with nothing auto-filled.</figcaption>
+        </figure>
+        <figure class="cs-figure">
+          <img src="images/fax-intake/after-clean.webp" alt="After: the fax intake form opens in the same window, with many fields automatically filled by machine learning">
+          <figcaption class="cs-caption">After: the form opens alongside the fax in the same window, with ML auto-filling the fields it can read.</figcaption>
+        </figure>
+      </div>
+    </section>
 
-    </div>
+    <section class="cs-section">
+      <div class="wrap">
+        <div class="cs-row">
+          <div class="cs-num">02</div>
+          <h2 class="cs-heading">Research</h2>
+          <div class="cs-body">
+            <p>To ground the redesign and guide ongoing iteration, I ran 11 user interviews alongside a time study. The output was a journey map that product teams across Cohere still reference today.</p>
+          </div>
+        </div>
+        <figure class="cs-figure">
+          <img src="images/fax-intake/journey-map.png" alt="Fax intake journey map plotting efficiency and accuracy across nine steps, from loading the fax to submitting the authorization, with pain points and user quotes at each stage">
+          <figcaption class="cs-caption">Journey map from the interviews and time study, still referenced by product teams across Cohere to prioritize new work.</figcaption>
+        </figure>
+      </div>
+    </section>
   </main>
 
-  <div class="case-nav-next">
-    <div class="wrap" style="display:flex; justify-content:space-between; align-items:baseline;">
-      <a href="case-rdt.html" class="underline-link">
-        <span class="label">Next project</span>
-        <span class="title">Rapid Diagnostic Test Reader App</span>
+  <div class="cs-next">
+    <div class="wrap">
+      <a href="index.html#selected-work" class="underline-link">
+        <span class="label">&larr; Back</span>
+        <span class="title">All work</span>
+      </a>
+      <a href="case-scanwell.html" class="underline-link">
+        <span class="label">Next project &rarr;</span>
+        <span class="title">At-Home COVID-19 Test</span>
       </a>
     </div>
   </div>
@@ -82,5 +104,6 @@
     </div>
   </footer>
 
+  <script src="lightbox.js" defer></script>
 </body>
 </html>
