@@ -797,8 +797,7 @@ body.case-v2 { --rule: #3A4256; }
 }
 
 .cs-callout {
-  max-width: 720px;
-  margin: 36px auto 0;
+  margin: 36px 0 0;
   text-align: center;
 }
 .cs-callout p {
