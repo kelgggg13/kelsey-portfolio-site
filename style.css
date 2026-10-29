@@ -631,9 +631,9 @@ body.case-v2 { --rule: #3A4256; }
 .cs-meta p { margin: 0; }
 .cs-meta strong { color: #fff; font-weight: 600; }
 
-.cs-intro { padding: clamp(64px, 8vw, 112px) 0; }
+.cs-intro { padding: clamp(48px, 6vw, 84px) 0; }
 .cs-statement {
-  margin: 0 0 clamp(40px, 5vw, 72px);
+  margin: 0;
   max-width: 960px;
   font-family: var(--serif);
   font-weight: 500;
