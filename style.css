@@ -848,36 +848,67 @@ body.case-v2 { --rule: #3A4256; }
 @media (max-width: 560px) {
   .cs-pains { grid-template-columns: minmax(0, 1fr); }
 }
-/* Challenge: one block per role, so the two stories read separately */
+/* Two roles, two colors: pink for intake specialists, blue for supervisors.
+   The same colors tag each role again in the final designs. */
+.is-specialist { --role: var(--accent-warm); }
+.is-supervisor { --role: #49BEFF; }
 .cs-roles {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  margin: 4px 0 8px;
+  margin-top: 28px;
 }
 .cs-role {
-  padding: 20px 22px 6px;
+  padding: 28px 28px 14px;
   border: 1px solid var(--line);
+  border: 1px solid color-mix(in srgb, var(--role) 38%, transparent);
   border-radius: 16px;
   background: var(--surface);
 }
+.cs-role-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.cs-role-ic {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border: 1px solid color-mix(in srgb, var(--role) 55%, transparent);
+  border-radius: 50%;
+  color: var(--role);
+}
+.cs-role-ic svg { width: 32px; height: 32px; }
 .cs-role-tag {
   display: inline-block;
-  margin-bottom: 12px;
   padding: 4px 12px;
   border-radius: 999px;
-  background: var(--accent-warm);
+  background: var(--role, var(--accent-warm));
   color: #0B0F19;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
 }
-.cs-body .cs-role .lead {
-  font-size: clamp(17px, 1.4vw, 19px);
+.cs-body > .cs-role-tag { margin-bottom: 12px; }
+.cs-role .lead {
+  margin: 0 0 8px;
+  font-size: clamp(18px, 1.6vw, 22px);
   font-weight: 600;
+  line-height: 1.35;
   color: var(--ink);
-  margin-bottom: 8px;
 }
-.cs-role .lead strong { color: var(--accent-warm); font-weight: 600; }
+.cs-role p:not(.lead) {
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+@media (max-width: 820px) {
+  .cs-roles { grid-template-columns: minmax(0, 1fr); }
+}
 
 /* Goals: three cards that jump to the matching goal section */
 .cs-goals {

@@ -211,18 +211,30 @@
           <h2 class="cs-heading">Everything Salesforce does, but better</h2>
           <div class="cs-body">
             <h3>Challenge</h3>
-            <div class="cs-roles">
-              <div class="cs-role">
-                <span class="cs-role-tag">Intake specialists</span>
-                <p class="lead">They didn&rsquo;t always know which case to work next.</p>
-                <p>That led to missed turnaround times (TAT). TAT is essential for compliance, and missing it can mean significant revenue loss.</p>
-              </div>
-              <div class="cs-role">
-                <span class="cs-role-tag">Supervisors</span>
-                <p class="lead">They spent nearly <strong>75% of their time</strong> manually assigning cases.</p>
-                <p>That pulled them away from higher-value work like coaching and team development.</p>
-              </div>
+          </div>
+        </div>
+        <div class="cs-roles">
+          <div class="cs-role is-specialist">
+            <div class="cs-role-top">
+              <span class="cs-role-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+              <span class="cs-role-tag is-specialist">Intake specialists</span>
             </div>
+            <p class="lead">They didn&rsquo;t always know which case to work next.</p>
+            <p>That led to missed turnaround times (TAT). TAT is essential for compliance, and missing it can mean significant revenue loss.</p>
+          </div>
+          <div class="cs-role is-supervisor">
+            <div class="cs-role-top">
+              <span class="cs-role-ic" aria-hidden="true"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="18" stroke="currentColor" stroke-opacity="0.25" stroke-width="4"/><circle cx="22" cy="22" r="18" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="84.8 113.1" transform="rotate(-90 22 22)"/><text x="22" y="26" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor" stroke="none">75%</text></svg></span>
+              <span class="cs-role-tag is-supervisor">Supervisors</span>
+            </div>
+            <p class="lead">They spent nearly 75% of their time manually assigning cases.</p>
+            <p>That pulled them away from higher-value work like coaching and team development.</p>
+          </div>
+        </div>
+        <div class="cs-row" style="margin-top: clamp(48px, 6vw, 88px);">
+          <div></div>
+          <div></div>
+          <div class="cs-body">
             <h3>Exploration</h3>
             <p>Starting broad: how should a fax get assigned and worked on? I explored five directions, including &ldquo;case galaxy,&rdquo; a deliberate push-the-limit idea that surprisingly ended up informing the final solution.</p>
           </div>
@@ -235,7 +247,8 @@
           <div></div>
           <h3 class="cs-heading" style="font-size: 20px;">Final designs</h3>
           <div class="cs-body">
-            <p><strong>Intake specialists</strong> get one unmissable action: start the next case, and the system finds the highest-priority one for them. Queue and personal metrics sit above their case history.</p>
+            <span class="cs-role-tag is-specialist">Intake specialists</span>
+            <p>They get one unmissable action: start the next case, and the system finds the highest-priority one for them. Queue and personal metrics sit above their case history.</p>
           </div>
         </div>
         <figure class="cs-figure">
@@ -249,7 +262,8 @@
           <div></div>
           <div></div>
           <div class="cs-body">
-            <p><strong>Supervisors</strong> get real-time queue and team metrics, red &ldquo;Unassigned&rdquo; chips that flag cases needing attention, search across unworked, in-progress, and completed cases, and extra tabs for greater autonomy: Queues, Reports, and Feature Flags.</p>
+            <span class="cs-role-tag is-supervisor">Supervisors</span>
+            <p>They get real-time queue and team metrics, red &ldquo;Unassigned&rdquo; chips that flag cases needing attention, search across unworked, in-progress, and completed cases, and extra tabs for greater autonomy: Queues, Reports, and Feature Flags.</p>
           </div>
         </div>
         <figure class="cs-figure">
