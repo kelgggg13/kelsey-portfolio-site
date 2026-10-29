@@ -280,8 +280,8 @@ function gatePage({ redirectTo, error }) {
       <div class="wrap">
         <div class="work-stack">
           <div class="stack-card" style="--r:-4deg; --y:6px; --z:3;"><div class="stack-media stack-media--pink"><img src="/images/home/qm.png" alt=""></div><div class="stack-body"><h3>Queue Management</h3><p>How I led the design of a workforce management tool</p></div></div>
-          <div class="stack-card" style="--r:3deg; --y:-8px; --z:2;"><div class="stack-media stack-media--yellow"><img src="/images/home/scanwell.png" alt=""></div><div class="stack-body"><h3>At-Home COVID-19 Test</h3><p>How our team shipped the first digitally read test</p></div></div>
-          <div class="stack-card" style="--r:-3.5deg; --y:8px; --z:1;"><div class="stack-media stack-media--blue"><img src="/images/home/fax.png" alt=""></div><div class="stack-body"><h3>ML-enabled Fax Intake</h3><p>How I redesigned fax intake with AI</p></div></div>
+          <div class="stack-card" style="--r:3deg; --y:-8px; --z:2;"><div class="stack-media stack-media--blue"><img src="/images/home/fax.png" alt=""></div><div class="stack-body"><h3>ML-enabled Fax Intake</h3><p>How I redesigned fax intake with AI</p></div></div>
+          <div class="stack-card" style="--r:-3.5deg; --y:8px; --z:1;"><div class="stack-media stack-media--yellow"><img src="/images/home/scanwell.png" alt=""></div><div class="stack-body"><h3>At-Home COVID-19 Test</h3><p>How our team shipped the first digitally read test</p></div></div>
         </div>
       </div>
     </div>
