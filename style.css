@@ -761,6 +761,16 @@ body.case-v2 { --rule: #3A4256; }
   border-radius: 16px;
 }
 
+/* Full-bleed image: spans the whole page width, no card or caption */
+.cs-bleed {
+  margin: clamp(40px, 5vw, 72px) 0 0;
+}
+.cs-bleed img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* Outcomes: big serif numbers, each under a pink rule that draws in on scroll */
 .cs-outcomes .stat-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
