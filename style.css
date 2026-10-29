@@ -848,6 +848,78 @@ body.case-v2 { --rule: #3A4256; }
 @media (max-width: 560px) {
   .cs-pains { grid-template-columns: minmax(0, 1fr); }
 }
+/* Goals: three cards that jump to the matching goal section */
+.cs-goals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+.cs-goal {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 24px 24px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.cs-goal-label {
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--accent-warm);
+  color: #0B0F19;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.cs-goal h3 {
+  margin: 0;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: clamp(19px, 1.7vw, 24px);
+  line-height: 1.25;
+}
+.cs-goal p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.cs-goal-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--accent-warm);
+}
+.cs-goal-go i {
+  font-style: normal;
+  transition: transform 0.25s ease;
+}
+.cs-goal:hover,
+.cs-goal:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--accent-warm);
+  box-shadow: 0 16px 40px rgba(248, 195, 185, 0.14);
+  outline: none;
+}
+.cs-goal:hover .cs-goal-go i,
+.cs-goal:focus-visible .cs-goal-go i { transform: translateY(4px); }
+@media (max-width: 900px) {
+  .cs-goals { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-goal, .cs-goal-go i { transition: none; }
+  .cs-goal:hover, .cs-goal:focus-visible { transform: none; }
+}
 .cs-flow-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
