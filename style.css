@@ -735,29 +735,6 @@ body.case-v2 { --rule: #3A4256; }
 .cs-figure .cs-caption { margin-top: 20px; }
 .cs-figure-grid .cs-cap-cell p { margin: 12px 0 0; font-size: 14px; line-height: 1.5; color: var(--ink-faint); }
 
-.cs-quotes {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(20px, 3vw, 40px);
-  margin: clamp(32px, 4vw, 56px) 0 0;
-}
-.cs-quote {
-  margin: 0;
-  padding: clamp(20px, 3vw, 32px);
-  border-left: 2px solid var(--accent-warm);
-  font-family: var(--serif);
-  font-size: clamp(20px, 2vw, 26px);
-  line-height: 1.4;
-  color: var(--ink);
-}
-.cs-quote cite {
-  display: block;
-  margin-top: 14px;
-  font-family: var(--sans);
-  font-style: normal;
-  font-size: 14px;
-  color: var(--ink-faint);
-}
 .cs-compare {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -772,9 +749,6 @@ body.case-v2 { --rule: #3A4256; }
 .cs-compare h4 { margin: 0 0 12px; font-size: 17px; font-weight: 600; color: var(--accent-warm); }
 .cs-compare ul { margin: 0; padding-left: 18px; }
 .cs-compare li { margin-bottom: 8px; font-size: 16px; line-height: 1.5; color: var(--ink-soft); }
-.cs-big-stat { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin: 28px 0 0; }
-.cs-big-stat .n { font-family: var(--serif); font-size: clamp(48px, 6vw, 80px); line-height: 1; color: var(--accent-warm); }
-.cs-big-stat .l { font-size: 17px; color: var(--ink-soft); }
 
 .cs-outcomes .stat-grid { margin-top: 40px; max-width: none; }
 .cs-next {
@@ -793,7 +767,7 @@ body.case-v2 { --rule: #3A4256; }
 
 @media (max-width: 820px) {
   .cs-row { grid-template-columns: minmax(0, 1fr); }
-  .cs-figure-grid, .cs-quotes, .cs-compare { grid-template-columns: minmax(0, 1fr); }
+  .cs-figure-grid, .cs-compare { grid-template-columns: minmax(0, 1fr); }
 }
 
 .cs-callout {
@@ -885,6 +859,59 @@ body.case-v2 { --rule: #3A4256; }
 }
 @media (max-width: 640px) {
   .cs-roles { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+}
+
+/* Feedback: the satisfaction stat and two quotes as three equal cards */
+.cs-feedback {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+.cs-fb {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+}
+.cs-fb-stat {
+  justify-content: center;
+  gap: 12px;
+  border-color: rgba(248, 195, 185, 0.4);
+  background: rgba(248, 195, 185, 0.07);
+}
+.cs-fb-stat .n {
+  font-family: var(--serif);
+  font-size: clamp(56px, 6vw, 80px);
+  line-height: 1;
+  color: var(--accent-warm);
+}
+.cs-fb-stat .l {
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+.cs-fb-quote p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(19px, 1.8vw, 24px);
+  line-height: 1.4;
+  color: var(--ink);
+}
+.cs-fb-quote cite {
+  display: block;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 14px;
+  color: var(--ink-faint);
+}
+@media (max-width: 900px) {
+  .cs-feedback { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* Goals: three cards that jump to the matching goal section */
