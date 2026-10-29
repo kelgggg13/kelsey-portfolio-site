@@ -861,26 +861,34 @@ body.case-v2 { --rule: #3A4256; }
   .cs-roles { grid-template-columns: minmax(0, 1fr); gap: 20px; }
 }
 
-/* Feedback: the satisfaction stat and two quotes in one row, each set off by a pink line */
+/* Feedback: sits in the right-hand column like Final design. The stat leads, the two quotes sit side by side under it, each set off by a pink line. */
 .cs-feedback {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(24px, 3vw, 40px);
-  margin-top: 28px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 28px;
 }
 .cs-fb {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
   margin: 0;
-  padding: 4px 0 4px clamp(18px, 2vw, 26px);
+  padding: 2px 0 2px 20px;
   border-left: 2px solid var(--accent-warm);
 }
-.cs-fb-stat { gap: 12px; justify-content: flex-start; }
+.cs-fb-stat {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 4px 14px;
+  padding: 0;
+  border-left: 0;
+}
 .cs-fb-stat .n {
   font-family: var(--serif);
-  font-size: clamp(56px, 6vw, 80px);
+  font-size: clamp(48px, 5vw, 64px);
   line-height: 1;
   color: var(--accent-warm);
 }
@@ -892,7 +900,7 @@ body.case-v2 { --rule: #3A4256; }
 .cs-fb-quote p {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(19px, 1.8vw, 24px);
+  font-size: clamp(18px, 1.6vw, 21px);
   line-height: 1.4;
   color: var(--ink);
 }
@@ -903,8 +911,8 @@ body.case-v2 { --rule: #3A4256; }
   font-size: 14px;
   color: var(--ink-faint);
 }
-@media (max-width: 900px) {
-  .cs-feedback { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+@media (max-width: 560px) {
+  .cs-feedback { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* Goals: three cards that jump to the matching goal section */
