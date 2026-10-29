@@ -852,62 +852,39 @@ body.case-v2 { --rule: #3A4256; }
    The same colors tag each role again in the final designs. */
 .is-specialist { --role: var(--accent-warm); }
 .is-supervisor { --role: #49BEFF; }
-.cs-roles {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 28px;
-}
-.cs-role {
-  padding: 28px 28px 14px;
-  border: 1px solid var(--line);
-  border: 1px solid color-mix(in srgb, var(--role) 38%, transparent);
-  border-radius: 16px;
-  background: var(--surface);
-}
-.cs-role-top {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 20px;
-}
-.cs-role-ic {
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 52px;
-  height: 52px;
-  border: 1px solid color-mix(in srgb, var(--role) 55%, transparent);
-  border-radius: 50%;
-  color: var(--role);
-}
-.cs-role-ic svg { width: 32px; height: 32px; }
 .cs-role-tag {
   display: inline-block;
-  padding: 4px 12px;
+  padding: 3px 11px;
   border-radius: 999px;
   background: var(--role, var(--accent-warm));
   color: #0B0F19;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 1.4;
 }
-.cs-body > .cs-role-tag { margin-bottom: 12px; }
+.cs-body > .cs-role-tag { margin-bottom: 10px; }
+.cs-roles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 28px;
+  margin: 4px 0 12px;
+}
+.cs-role .cs-role-tag { margin-bottom: 8px; }
 .cs-role .lead {
-  margin: 0 0 8px;
-  font-size: clamp(18px, 1.6vw, 22px);
+  margin: 0 0 6px;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.4;
   color: var(--ink);
 }
 .cs-role p:not(.lead) {
-  margin: 0 0 14px;
-  font-size: 15px;
-  line-height: 1.55;
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.5;
   color: var(--ink-soft);
 }
-@media (max-width: 820px) {
-  .cs-roles { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 640px) {
+  .cs-roles { grid-template-columns: minmax(0, 1fr); gap: 20px; }
 }
 
 /* Goals: three cards that jump to the matching goal section */
