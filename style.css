@@ -848,6 +848,37 @@ body.case-v2 { --rule: #3A4256; }
 @media (max-width: 560px) {
   .cs-pains { grid-template-columns: minmax(0, 1fr); }
 }
+/* Challenge: one block per role, so the two stories read separately */
+.cs-roles {
+  display: grid;
+  gap: 16px;
+  margin: 4px 0 8px;
+}
+.cs-role {
+  padding: 20px 22px 6px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+}
+.cs-role-tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--accent-warm);
+  color: #0B0F19;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.cs-body .cs-role .lead {
+  font-size: clamp(17px, 1.4vw, 19px);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.cs-role .lead strong { color: var(--accent-warm); font-weight: 600; }
+
 /* Goals: three cards that jump to the matching goal section */
 .cs-goals {
   display: grid;
