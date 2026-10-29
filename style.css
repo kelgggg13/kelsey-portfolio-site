@@ -785,15 +785,15 @@ body.case-v2 { --rule: #3A4256; }
 .cs-outcomes .stat-card .num {
   margin-bottom: 14px;
   font-size: clamp(44px, 5vw, 72px);
+  font-weight: 400;
   line-height: 1;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
 .cs-outcomes .stat-card .num .u {
-  font-family: var(--sans);
-  font-size: 0.45em;
+  font-size: 0.5em;
   font-weight: 400;
-  color: var(--ink-soft);
+  color: inherit;
 }
 .cs-outcomes .stat-card .label {
   max-width: 22ch;
