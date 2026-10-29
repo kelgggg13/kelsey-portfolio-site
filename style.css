@@ -610,13 +610,15 @@ body.case-v2 { --rule: #3A4256; }
 .cs-hero {
   background: linear-gradient(180deg, #2A2255 0%, #6B4A86 52%, #A9658D 100%);
 }
-/* One gradient per project: Queue Management is purple to pink, fax intake is blue, the COVID-19 test is amber */
+/* One two-hue gradient per project, like Queue Management's indigo to pink:
+   fax intake runs deep sapphire into emerald, the COVID-19 test runs dark umber into burnt orange and gold */
 .cs-hero--blue {
-  background: linear-gradient(180deg, #0A2342 0%, #14527F 52%, #2F82B8 100%);
+  background: linear-gradient(180deg, #0A1B4D 0%, #1B4F9B 50%, #148A6A 100%);
 }
 .cs-hero--amber {
-  background: linear-gradient(180deg, #2B1A0A 0%, #8A4B12 52%, #B5651D 100%);
+  background: linear-gradient(180deg, #2E1407 0%, #A8400B 46%, #D9892A 100%);
 }
+.cs-hero--amber .cs-meta { text-shadow: 0 1px 10px rgba(46, 20, 7, 0.35); }
 .cs-hero-inner {
   padding-top: clamp(72px, 9vw, 128px);
   padding-bottom: clamp(56px, 6vw, 88px);
