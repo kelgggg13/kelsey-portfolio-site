@@ -799,15 +799,6 @@ body.case-v2 { --rule: #3A4256; }
 .cs-callout {
   margin: 36px 0;
 }
-.cs-callout .n {
-  display: block;
-  margin-bottom: 12px;
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(64px, 8vw, 112px);
-  line-height: 1;
-  color: var(--accent-warm);
-}
 .cs-body .cs-callout p {
   margin: 0;
   font-size: clamp(18px, 1.5vw, 21px);
