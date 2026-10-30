@@ -778,7 +778,13 @@ body.case-v2 { --rule: #3A4256; }
 }
 
 /* Embedded interactive prototype: a framed iframe in a figure card, scaled to fit by prototype-frame.js */
-.cs-figure.cs-proto { padding: clamp(14px, 2vw, 24px); }
+/* wider than the text column, so the prototype shows at its own size instead of being squeezed */
+.cs-figure.cs-proto {
+  width: min(1240px, calc(100% - 48px));
+  margin-left: auto;
+  margin-right: auto;
+  padding: clamp(14px, 2vw, 24px);
+}
 .cs-proto-bar {
   display: flex;
   align-items: baseline;
